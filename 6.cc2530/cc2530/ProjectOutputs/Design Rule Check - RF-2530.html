@@ -1,0 +1,586 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-16">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : sans-serif;
+			color : white;
+			background-color : #21489e;
+			padding: 0.3em;
+		}
+		body {
+			font-family : verdana;
+		}
+		td, th {
+			padding: 0.5em;
+			text-align : center;
+			width : 18%;
+		}
+		th {
+			background-color : #A6CAF0;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+		}
+		
+		.DRC_summary_header {							
+			padding-bottom : 0.1em;
+			border : 0px solid black;							
+			width: 100%;
+                        align: right;
+                        
+		}
+
+		.DRC_summary_header_col1, 
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3
+		{
+			color : black;
+			font-size:150%;
+                        padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2: 0em;
+			border : 0px solid black;
+			width : auto;
+			vertical-align: top;
+			font-weight: bold;				
+		}
+		
+		.DRC_summary_header_col1 	
+		{		                       
+			text-align: right;
+                        width: auto;	
+		}
+
+		.DRC_summary_header_col2 	
+		{		
+			text-align: center;	
+		}
+
+		.DRC_summary_header_col3 	
+		{		
+			text-align: left;	
+		}
+
+
+		
+		.header_holder
+		{
+		Width = 100%;
+		border = 0px solid green;
+		padding = 0;
+		}
+		
+		
+		
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+                {
+			left:0;
+			top:0;
+			padding-top : 0.1em;			
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top
+
+		}
+		.front_matter {	
+			
+			margin-top: 5px;
+ 			margin-left: 0px;					 			
+ 			horizontal-align: left;
+		}
+				
+		
+		.front_matter_column1 {
+			width : 10em;	
+			text-align  : right;
+			padding-right:0.1em;
+			
+		}
+		
+		.front_matter_column2 {
+                        width: 0.1em;
+			align: center;
+			text-align : center;
+			margin-right  : 0.1em;	
+			margin-left   : 0.1em;
+		}
+		.front_matter_column3 {
+			width         : auto;  
+			text-align    : left;	
+			margin-right  : 0.5em;				
+		}
+		
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : right;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #EEEEE0 
+		}
+		tr.onmouseout_even { 
+			background-color : #F3F3E3   
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : lightYellow
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #008000 
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script></head>
+<body onload=""><img ALT="Altium" src="
+			file://G:\ALTIUM_DESIGNER\Templates\AD-rgb_logo_223x64.gif
+		"><a href="dxpprocess://Client:SetupPreferences?Server=PCB|PageName=Reports" class="customize"><acronym title="dxpprocess://Client:SetupPreferences?Server=PCB|PageName=Reports">customize</acronym></a><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td Style="width:70%">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3">2014/10/9</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3">0:22:05</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3">00:00:00</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3"><a href="file:///F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc" class="file"><acronym title="F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc">F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td Style="Width:30%">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings</td>
+<td class="DRC_summary_header_col2">:</td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations</td>
+<td class="DRC_summary_header_col2">:</td>
+<td class="DRC_summary_header_col3" style="color : red">74</td></tr>
+</table>
+</td>
+</table>
+<hr><a name="IDAVA0MO"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDALB0MO">Room CC2530 (Bounding Region = (109.2454mm, 59.944mm, 131.6482mm, 76.835mm) (InComponentClass('CC2530'))</a></td>
+<td class="column2">37</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAB00MO">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAL00MO">Broken-Net Constraint ( (All) )</a></td>
+<td class="column2">37</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAK41MO">Clearance Constraint (Gap=0.1524mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAU41MO">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDA441MO">Width Constraint (Min=0.2mm) (Max=2.032mm) (Preferred=0.2032mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAI51MO">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAS51MO">Hole Size Constraint (Min=0.0254mm) (Max=2.54mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDA251MO">Clearance Constraint (Gap=0.4mm) (Disabled)(All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">74</td>
+</tr>
+</table><br><hr><a name="IDALB0MO"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Room CC2530 (Bounding Region = (109.2454mm, 59.944mm, 131.6482mm, 76.835mm) (InComponentClass('CC2530'))</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=4444.291mil|Location2.X=5206.196mil|Location1.Y=2219.356mil|Location2.Y=3445.041mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=4444.291mil|Location2.X=5206.196mil|Location1.Y=2219.356mil|Location2.Y=3445.041mil|Absolute=True">SIP Component header1-header (16.5862mm,3.9116mm) on Top Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3021.894mil|Location2.X=3783.799mil|Location1.Y=2295.007mil|Location2.Y=3520.692mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3021.894mil|Location2.X=3783.799mil|Location1.Y=2295.007mil|Location2.Y=3520.692mil|Absolute=True">SMT Small Component C391-1u (-18.0732mm,12.3274mm) on Top Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3357.428mil|Location2.X=4119.333mil|Location1.Y=2121.449mil|Location2.Y=3347.134mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3357.428mil|Location2.X=4119.333mil|Location1.Y=2121.449mil|Location2.Y=3347.134mil|Absolute=True">SMT Small Component C101-0.1 (-10.9358mm,9.0254mm) on Top Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3342.894mil|Location2.X=4104.799mil|Location1.Y=2551.949mil|Location2.Y=3777.634mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3342.894mil|Location2.X=4104.799mil|Location1.Y=2551.949mil|Location2.Y=3777.634mil|Absolute=True">SMT Small Component C241-0.1 (-11.3422mm,19.9728mm) on Top Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3460.827mil|Location2.X=4222.732mil|Location1.Y=2458.275mil|Location2.Y=3683.959mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3460.827mil|Location2.X=4222.732mil|Location1.Y=2458.275mil|Location2.Y=3683.959mil|Absolute=True">SMT Small Component C211-0.1 (-8.15306mm,17.56806mm) on Top Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3308.064mil|Location2.X=4069.969mil|Location1.Y=2842.342mil|Location2.Y=4068.026mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3308.064mil|Location2.X=4069.969mil|Location1.Y=2842.342mil|Location2.Y=4068.026mil|Absolute=True">SMT Small Component L261-2nH (-13.8192mm,23.8336mm) on Top Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3398.531mil|Location2.X=4160.436mil|Location1.Y=2797.29mil|Location2.Y=4022.975mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3398.531mil|Location2.X=4160.436mil|Location1.Y=2797.29mil|Location2.Y=4022.975mil|Absolute=True">SMT Small Component L252-2nH (-12.6592mm,22.589mm) on Top Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3281.697mil|Location2.X=4043.602mil|Location1.Y=2797.29mil|Location2.Y=4022.975mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3281.697mil|Location2.X=4043.602mil|Location1.Y=2797.29mil|Location2.Y=4022.975mil|Absolute=True">SMT Small Component C262-1p (-13.8192mm,22.589mm) on Top Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3308.449mil|Location2.X=4070.354mil|Location1.Y=2679.29mil|Location2.Y=3904.975mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3308.449mil|Location2.X=4070.354mil|Location1.Y=2679.29mil|Location2.Y=3904.975mil|Absolute=True">SMT Small Component C261-18p (-13.8192mm,18.8806mm) on Top Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3357.157mil|Location2.X=4119.063mil|Location1.Y=2911.177mil|Location2.Y=4136.861mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3357.157mil|Location2.X=4119.063mil|Location1.Y=2911.177mil|Location2.Y=4136.861mil|Absolute=True">SMT Small Component C253 (-13.2392mm,26.3144mm) on Top Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3398.645mil|Location2.X=4160.55mil|Location1.Y=2841.807mil|Location2.Y=4067.491mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3398.645mil|Location2.X=4160.55mil|Location1.Y=2841.807mil|Location2.Y=4067.491mil|Absolute=True">SMT Small Component C252-1p (-12.6592mm,23.8336mm) on Top Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3394.783mil|Location2.X=4156.689mil|Location1.Y=2679.29mil|Location2.Y=3904.975mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3394.783mil|Location2.X=4156.689mil|Location1.Y=2679.29mil|Location2.Y=3904.975mil|Absolute=True">SMT Small Component C251-18p (-12.6592mm,18.8806mm) on Top Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3007.103mil|Location2.X=3769.008mil|Location1.Y=2889.685mil|Location2.Y=4115.37mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3007.103mil|Location2.X=3769.008mil|Location1.Y=2889.685mil|Location2.Y=4115.37mil|Absolute=True">Small Component Y2-32.768K (-21.9964mm,28.6512mm) on Top Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3511.354mil|Location2.X=4273.26mil|Location1.Y=2707.134mil|Location2.Y=3932.818mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3511.354mil|Location2.X=4273.26mil|Location1.Y=2707.134mil|Location2.Y=3932.818mil|Absolute=True">Component Y1-32M (-7.7384mm,25.3644mm) on Top Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=2982.39mil|Location2.X=3744.296mil|Location1.Y=2552.566mil|Location2.Y=3778.251mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=2982.39mil|Location2.X=3744.296mil|Location1.Y=2552.566mil|Location2.Y=3778.251mil|Absolute=True">SMT Small Component R5-56K (-19.4288mm,18.285mm) on Top Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=2912.286mil|Location2.X=3674.191mil|Location1.Y=2451.001mil|Location2.Y=3676.685mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=2912.286mil|Location2.X=3674.191mil|Location1.Y=2451.001mil|Location2.Y=3676.685mil|Absolute=True">SMT Small Component R3-10K (-21.4862mm,16.761mm) on Top Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3059.39mil|Location2.X=3821.296mil|Location1.Y=1829.159mil|Location2.Y=3054.843mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3059.39mil|Location2.X=3821.296mil|Location1.Y=1829.159mil|Location2.Y=3054.843mil|Absolute=True">SMT Small Component R1-330R (-16.4062mm,1.0638mm) on Top Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3012.528mil|Location2.X=3774.433mil|Location1.Y=2745.492mil|Location2.Y=3971.176mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3012.528mil|Location2.X=3774.433mil|Location1.Y=2745.492mil|Location2.Y=3971.176mil|Absolute=True">SMT Small Component L1-2nH (-18.8722mm,23.1394mm) on Top Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3235.732mil|Location2.X=3997.638mil|Location1.Y=2342.535mil|Location2.Y=3568.219mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3235.732mil|Location2.X=3997.638mil|Location1.Y=2342.535mil|Location2.Y=3568.219mil|Absolute=True">LCC Component IC1-CC2530 (-15.4892mm,11.0036mm) on Top Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3496.359mil|Location2.X=4258.265mil|Location1.Y=1837.47mil|Location2.Y=3063.154mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3496.359mil|Location2.X=4258.265mil|Location1.Y=1837.47mil|Location2.Y=3063.154mil|Absolute=True">SMT Small Component D2-LED (-4.6968mm,2.2068mm) on Top Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3228.735mil|Location2.X=3990.64mil|Location1.Y=1833.846mil|Location2.Y=3059.53mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3228.735mil|Location2.X=3990.64mil|Location1.Y=1833.846mil|Location2.Y=3059.53mil|Absolute=True">SMT Small Component D1-LED (-15.3394mm,0.251mm) on Top Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3015.418mil|Location2.X=3777.323mil|Location1.Y=2407.949mil|Location2.Y=3633.634mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3015.418mil|Location2.X=3777.323mil|Location1.Y=2407.949mil|Location2.Y=3633.634mil|Absolute=True">SMT Small Component C12-0.1 (-18.2002mm,16.3406mm) on Top Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=2864.198mil|Location2.X=3626.103mil|Location1.Y=2774.277mil|Location2.Y=3999.961mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=2864.198mil|Location2.X=3626.103mil|Location1.Y=2774.277mil|Location2.Y=3999.961mil|Absolute=True">SMT Small Component C11-15pF (-22.9616mm,25.7048mm) on Top Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=2864.198mil|Location2.X=3626.103mil|Location1.Y=2773.277mil|Location2.Y=3998.961mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=2864.198mil|Location2.X=3626.103mil|Location1.Y=2773.277mil|Location2.Y=3998.961mil|Absolute=True">SMT Small Component C10-15pF (-24.8412mm,25.6794mm) on Top Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3517.418mil|Location2.X=4279.324mil|Location1.Y=2567.232mil|Location2.Y=3792.917mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3517.418mil|Location2.X=4279.324mil|Location1.Y=2567.232mil|Location2.Y=3792.917mil|Absolute=True">SMT Small Component C9-27pF (-5.4494mm,20.3538mm) on Top Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3390.075mil|Location2.X=4151.98mil|Location1.Y=2735.607mil|Location2.Y=3961.291mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3390.075mil|Location2.X=4151.98mil|Location1.Y=2735.607mil|Location2.Y=3961.291mil|Absolute=True">SMT Small Component C8-27pF (-8.7768mm,24.7226mm) on Top Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=2864.198mil|Location2.X=3626.103mil|Location1.Y=1837.159mil|Location2.Y=3062.843mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=2864.198mil|Location2.X=3626.103mil|Location1.Y=1837.159mil|Location2.Y=3062.843mil|Absolute=True">SMT Small Component C7-0.1 (-22.5784mm,1.902mm) on Top Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3094.26mil|Location2.X=3856.166mil|Location1.Y=2528.607mil|Location2.Y=3754.291mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3094.26mil|Location2.X=3856.166mil|Location1.Y=2528.607mil|Location2.Y=3754.291mil|Absolute=True">SMT Small Component C6-220p (-15.3808mm,18.8298mm) on Top Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3095.26mil|Location2.X=3857.166mil|Location1.Y=2575.607mil|Location2.Y=3801.291mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3095.26mil|Location2.X=3857.166mil|Location1.Y=2575.607mil|Location2.Y=3801.291mil|Absolute=True">SMT Small Component C5-0.1 (-15.3808mm,20.0236mm) on Top Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=2864.198mil|Location2.X=3626.103mil|Location1.Y=2629.119mil|Location2.Y=3854.803mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=2864.198mil|Location2.X=3626.103mil|Location1.Y=2629.119mil|Location2.Y=3854.803mil|Absolute=True">SMT Small Component C1-2.2u (-22.8346mm,21.3868mm) on Top Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3068.551mil|Location2.X=3830.456mil|Location1.Y=2122.795mil|Location2.Y=3348.479mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3068.551mil|Location2.X=3830.456mil|Location1.Y=2122.795mil|Location2.Y=3348.479mil|Absolute=True">SMT Small Component C14-1uF (-16.3392mm,9.1572mm) on Top Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3618.444mil|Location2.X=4380.349mil|Location1.Y=1870.059mil|Location2.Y=3095.743mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3618.444mil|Location2.X=4380.349mil|Location1.Y=1870.059mil|Location2.Y=3095.743mil|Absolute=True">SMT Small Component R2-330R (-3.7062mm,0.9876mm) on Top Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3357.157mil|Location2.X=4119.063mil|Location1.Y=2946.404mil|Location2.Y=4172.089mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3357.157mil|Location2.X=4119.063mil|Location1.Y=2946.404mil|Location2.Y=4172.089mil|Absolute=True">SMT Small Component C254-2.2p (-13.2392mm,27.531mm) on Top Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3357.228mil|Location2.X=4119.133mil|Location1.Y=2946.404mil|Location2.Y=4172.089mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3357.228mil|Location2.X=4119.133mil|Location1.Y=2946.404mil|Location2.Y=4172.089mil|Absolute=True">SMT Small Component C255 (-13.2392mm,30.0736mm) on Top Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3340.949mil|Location2.X=4102.855mil|Location1.Y=2750.573mil|Location2.Y=3976.258mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3340.949mil|Location2.X=4102.855mil|Location1.Y=2750.573mil|Location2.Y=3976.258mil|Absolute=True">SMT Small Component L251 (-13.8192mm,21.3588mm) on Top Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3225.723mil|Location2.X=4029.08mil|Location1.Y=1720.719mil|Location2.Y=2946.404mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3225.723mil|Location2.X=4029.08mil|Location1.Y=1720.719mil|Location2.Y=2946.404mil|Absolute=True">DIP Component P2-DUBUGGER (-18.4912mm,-7.62mm) on Top Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=2864.198mil|Location2.X=3626.103mil|Location1.Y=1720.719mil|Location2.Y=2946.404mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=2864.198mil|Location2.X=3626.103mil|Location1.Y=1720.719mil|Location2.Y=2946.404mil|Absolute=True">SMT Small Component R4-10K (-24.511mm,-2.9972mm) on Top Layer</acronym></a><br></td>
+</tr>
+</table></a><a href="#top">Back to top</a><br><br><a name="IDAL00MO"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Broken-Net Constraint ( (All) )</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3067.354mil|Location2.X=3829.259mil|Location1.Y=2481.293mil|Location2.Y=3706.978mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3067.354mil|Location2.X=3829.259mil|Location1.Y=2481.293mil|Location2.Y=3706.978mil|Absolute=True">Net NetIC1_30</acronym></a><br> is broken into 2 sub-nets. Routed To 0.00%<br>
+     Subnet : R5-1     <br>     Subnet : IC1-30   <br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3212.897mil|Location2.X=3974.802mil|Location1.Y=2653.106mil|Location2.Y=3878.79mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3212.897mil|Location2.X=3974.802mil|Location1.Y=2653.106mil|Location2.Y=3878.79mil|Absolute=True">Net NetC261_2</acronym></a><br> is broken into 4 sub-nets. Routed To 0.00%<br>
+     Subnet : L251-1   <br>     Subnet : C262-1   <br>     Subnet : C261-2   <br>     Subnet : L261-1   <br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3217.149mil|Location2.X=3979.054mil|Location1.Y=2493.017mil|Location2.Y=3718.702mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3217.149mil|Location2.X=3979.054mil|Location1.Y=2493.017mil|Location2.Y=3718.702mil|Absolute=True">Net NetC261_1</acronym></a><br> is broken into 2 sub-nets. Routed To 0.00%<br>
+     Subnet : C261-1   <br>     Subnet : IC1-26   <br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3235.732mil|Location2.X=3997.637mil|Location1.Y=2823.39mil|Location2.Y=4049.074mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3235.732mil|Location2.X=3997.637mil|Location1.Y=2823.39mil|Location2.Y=4049.074mil|Absolute=True">Net NetC252_2</acronym></a><br> is broken into 4 sub-nets. Routed To 0.00%<br>
+     Subnet : L261-2   <br>     Subnet : C253-1   <br>     Subnet : C252-2   <br>     Subnet : C254-1   <br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3260.732mil|Location2.X=4022.637mil|Location1.Y=2653.106mil|Location2.Y=3878.79mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3260.732mil|Location2.X=4022.637mil|Location1.Y=2653.106mil|Location2.Y=3878.79mil|Absolute=True">Net NetC251_2</acronym></a><br> is broken into 4 sub-nets. Routed To 0.00%<br>
+     Subnet : L252-1   <br>     Subnet : C252-1   <br>     Subnet : C251-2   <br>     Subnet : L251-2   <br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3254.315mil|Location2.X=4016.221mil|Location1.Y=2493.017mil|Location2.Y=3718.702mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3254.315mil|Location2.X=4016.221mil|Location1.Y=2493.017mil|Location2.Y=3718.702mil|Absolute=True">Net NetC251_1</acronym></a><br> is broken into 2 sub-nets. Routed To 0.00%<br>
+     Subnet : IC1-25   <br>     Subnet : C251-1   <br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3146.223mil|Location2.X=4082.19mil|Location1.Y=2264.967mil|Location2.Y=3490.651mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3146.223mil|Location2.X=4082.19mil|Location1.Y=2264.967mil|Location2.Y=3490.651mil|Absolute=True">Net NetC1_1</acronym></a><br> is broken into 19 sub-nets. Routed To 0.00%<br>
+     Subnet : C391-1   <br>     Subnet : C12-1    <br>     Subnet : R1-2     <br>     Subnet : IC1-39   <br>     Subnet : C1-1     <br>     Subnet : L1-1     <br>     Subnet : IC1-31   <br>     Subnet : C5-1     <br>     Subnet : C6-1     <br>     Subnet : IC1-24   <br>     Subnet : IC1-27   <br>     Subnet : R2-2     <br>     Subnet : C101-1   <br>     Subnet : IC1-10   <br>     Subnet : IC1-28   <br>     Subnet : IC1-29   <br>     Subnet : IC1-21   <br>     Subnet : C241-1   <br>     Subnet : C211-1   <br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3066.245mil|Location2.X=4876.122mil|Location1.Y=2044.022mil|Location2.Y=3500.186mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3066.245mil|Location2.X=4876.122mil|Location1.Y=2044.022mil|Location2.Y=3500.186mil|Absolute=True">Net VDD_3.3V</acronym></a><br> is broken into 5 sub-nets. Routed To 0.00%<br>
+     Subnet : R4-2     <br>     Subnet : R3-2     <br>     Subnet : P2-2     <br>     Subnet : L1-2     <br>     Subnet : header1-1 <br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3487.496mil|Location2.X=4612.122mil|Location1.Y=1899.945mil|Location2.Y=3125.629mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3487.496mil|Location2.X=4612.122mil|Location1.Y=1899.945mil|Location2.Y=3125.629mil|Absolute=True">Net SCK</acronym></a><br> is broken into 3 sub-nets. Routed To 0.00%<br>
+     Subnet : P2-6     <br>     Subnet : header2-2 <br>     Subnet : IC1-5    <br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3146.111mil|Location2.X=4876.122mil|Location1.Y=1944.022mil|Location2.Y=3199.068mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3146.111mil|Location2.X=4876.122mil|Location1.Y=1944.022mil|Location2.Y=3199.068mil|Absolute=True">Net RESET_N</acronym></a><br> is broken into 5 sub-nets. Routed To 0.00%<br>
+     Subnet : C7-1     <br>     Subnet : R3-1     <br>     Subnet : P2-7     <br>     Subnet : IC1-20   <br>     Subnet : header1-5 <br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3380.096mil|Location2.X=4612.122mil|Location1.Y=2311.382mil|Location2.Y=3537.067mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3380.096mil|Location2.X=4612.122mil|Location1.Y=2311.382mil|Location2.Y=3537.067mil|Absolute=True">Net P20</acronym></a><br> is broken into 2 sub-nets. Routed To 0.00%<br>
+     Subnet : IC1-36   <br>     Subnet : header2-10 <br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3624.19mil|Location2.X=4612.122mil|Location1.Y=2206.854mil|Location2.Y=3432.539mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3624.19mil|Location2.X=4612.122mil|Location1.Y=2206.854mil|Location2.Y=3432.539mil|Absolute=True">Net P07</acronym></a><br> is broken into 2 sub-nets. Routed To 0.00%<br>
+     Subnet : IC1-12   <br>     Subnet : header2-7 <br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3624.19mil|Location2.X=4612.122mil|Location1.Y=2241.697mil|Location2.Y=3467.382mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3624.19mil|Location2.X=4612.122mil|Location1.Y=2241.697mil|Location2.Y=3467.382mil|Absolute=True">Net P06</acronym></a><br> is broken into 2 sub-nets. Routed To 0.00%<br>
+     Subnet : IC1-13   <br>     Subnet : header2-8 <br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3624.19mil|Location2.X=4612.122mil|Location1.Y=2276.539mil|Location2.Y=3502.224mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3624.19mil|Location2.X=4612.122mil|Location1.Y=2276.539mil|Location2.Y=3502.224mil|Absolute=True">Net P05</acronym></a><br> is broken into 2 sub-nets. Routed To 0.00%<br>
+     Subnet : IC1-14   <br>     Subnet : header2-9 <br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3624.19mil|Location2.X=4612.122mil|Location1.Y=2211.382mil|Location2.Y=3437.067mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3624.19mil|Location2.X=4612.122mil|Location1.Y=2211.382mil|Location2.Y=3437.067mil|Absolute=True">Net P04</acronym></a><br> is broken into 2 sub-nets. Routed To 0.00%<br>
+     Subnet : IC1-15   <br>     Subnet : header2-6 <br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3624.19mil|Location2.X=4876.122mil|Location1.Y=2165.724mil|Location2.Y=3391.409mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3624.19mil|Location2.X=4876.122mil|Location1.Y=2165.724mil|Location2.Y=3391.409mil|Absolute=True">Net P03</acronym></a><br> is broken into 2 sub-nets. Routed To 0.00%<br>
+     Subnet : IC1-16   <br>     Subnet : header1-2 <br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3624.19mil|Location2.X=4876.122mil|Location1.Y=2200.567mil|Location2.Y=3426.252mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3624.19mil|Location2.X=4876.122mil|Location1.Y=2200.567mil|Location2.Y=3426.252mil|Absolute=True">Net P02</acronym></a><br> is broken into 2 sub-nets. Routed To 0.00%<br>
+     Subnet : IC1-17   <br>     Subnet : header1-3 <br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3624.19mil|Location2.X=4612.122mil|Location1.Y=2215.909mil|Location2.Y=3441.594mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3624.19mil|Location2.X=4612.122mil|Location1.Y=2215.909mil|Location2.Y=3441.594mil|Absolute=True">Net P01</acronym></a><br> is broken into 2 sub-nets. Routed To 0.00%<br>
+     Subnet : IC1-18   <br>     Subnet : header2-5 <br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3547.811mil|Location2.X=4876.122mil|Location1.Y=2207.85mil|Location2.Y=3433.535mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3547.811mil|Location2.X=4876.122mil|Location1.Y=2207.85mil|Location2.Y=3433.535mil|Absolute=True">Net P1.3</acronym></a><br> is broken into 2 sub-nets. Routed To 0.00%<br>
+     Subnet : IC1-7    <br>     Subnet : header1-6 <br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3567.497mil|Location2.X=4876.122mil|Location1.Y=2157.85mil|Location2.Y=3383.535mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3567.497mil|Location2.X=4876.122mil|Location1.Y=2157.85mil|Location2.Y=3383.535mil|Absolute=True">Net P1.2</acronym></a><br> is broken into 2 sub-nets. Routed To 0.00%<br>
+     Subnet : IC1-8    <br>     Subnet : header1-4 <br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3624.19mil|Location2.X=4876.122mil|Location1.Y=2370.252mil|Location2.Y=3595.937mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3624.19mil|Location2.X=4876.122mil|Location1.Y=2370.252mil|Location2.Y=3595.937mil|Absolute=True">Net P00</acronym></a><br> is broken into 2 sub-nets. Routed To 0.00%<br>
+     Subnet : IC1-19   <br>     Subnet : header1-9 <br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3572.205mil|Location2.X=4334.11mil|Location1.Y=1837.543mil|Location2.Y=3063.228mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3572.205mil|Location2.X=4334.11mil|Location1.Y=1837.543mil|Location2.Y=3063.228mil|Absolute=True">Net NetD2_A</acronym></a><br> is broken into 2 sub-nets. Routed To 0.00%<br>
+     Subnet : D2-A     <br>     Subnet : R2-1     <br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3150.14mil|Location2.X=3912.045mil|Location1.Y=1833.772mil|Location2.Y=3059.456mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3150.14mil|Location2.X=3912.045mil|Location1.Y=1833.772mil|Location2.Y=3059.456mil|Absolute=True">Net NetD1_A</acronym></a><br> is broken into 2 sub-nets. Routed To 0.00%<br>
+     Subnet : R1-1     <br>     Subnet : D1-A     <br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=2989.15mil|Location2.X=3751.055mil|Location1.Y=2643.867mil|Location2.Y=3869.552mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=2989.15mil|Location2.X=3751.055mil|Location1.Y=2643.867mil|Location2.Y=3869.552mil|Absolute=True">Net NetC11_1</acronym></a><br> is broken into 3 sub-nets. Routed To 0.00%<br>
+     Subnet : C11-1    <br>     Subnet : IC1-32   <br>     Subnet : Y2-1     <br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=2952.15mil|Location2.X=3714.055mil|Location1.Y=2659.614mil|Location2.Y=3885.299mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=2952.15mil|Location2.X=3714.055mil|Location1.Y=2659.614mil|Location2.Y=3885.299mil|Absolute=True">Net NetC10_1</acronym></a><br> is broken into 3 sub-nets. Routed To 0.00%<br>
+     Subnet : C10-1    <br>     Subnet : IC1-33   <br>     Subnet : Y2-2     <br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3380.096mil|Location2.X=4612.122mil|Location1.Y=1928.292mil|Location2.Y=3153.977mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3380.096mil|Location2.X=4612.122mil|Location1.Y=1928.292mil|Location2.Y=3153.977mil|Absolute=True">Net MOSI</acronym></a><br> is broken into 3 sub-nets. Routed To 0.00%<br>
+     Subnet : IC1-38   <br>     Subnet : P2-8     <br>     Subnet : header2-4 <br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3380.096mil|Location2.X=4612.122mil|Location1.Y=1938.134mil|Location2.Y=3163.819mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3380.096mil|Location2.X=4612.122mil|Location1.Y=1938.134mil|Location2.Y=3163.819mil|Absolute=True">Net MISO</acronym></a><br> is broken into 3 sub-nets. Routed To 0.00%<br>
+     Subnet : IC1-37   <br>     Subnet : P2-10    <br>     Subnet : header2-3 <br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3280.807mil|Location2.X=4042.712mil|Location1.Y=2023.193mil|Location2.Y=3248.877mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3280.807mil|Location2.X=4042.712mil|Location1.Y=2023.193mil|Location2.Y=3248.877mil|Absolute=True">Net LED2</acronym></a><br> is broken into 2 sub-nets. Routed To 0.00%<br>
+     Subnet : D1-K     <br>     Subnet : IC1-9    <br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3404.874mil|Location2.X=4166.779mil|Location1.Y=2033.741mil|Location2.Y=3259.425mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3404.874mil|Location2.X=4166.779mil|Location1.Y=2033.741mil|Location2.Y=3259.425mil|Absolute=True">Net LED1</acronym></a><br> is broken into 2 sub-nets. Routed To 0.00%<br>
+     Subnet : IC1-11   <br>     Subnet : D2-K     <br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=2926.661mil|Location2.X=4876.122mil|Location1.Y=1944.022mil|Location2.Y=4061.36mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=2926.661mil|Location2.X=4876.122mil|Location1.Y=1944.022mil|Location2.Y=4061.36mil|Absolute=True">Net GND</acronym></a><br> is broken into 26 sub-nets. Routed To 0.00%<br>
+     Subnet : C7-2     <br>     Subnet : C12-2    <br>     Subnet : C1-2     <br>     Subnet : R5-2     <br>     Subnet : P2-1     <br>     Subnet : C14-2    <br>     Subnet : C391-2   <br>     Subnet : C6-2     <br>     Subnet : C5-2     <br>     Subnet : C10-2    <br>     Subnet : C11-2    <br>     Subnet : IC1-3    <br>     Subnet : IC1-4    <br>     Subnet : IC1-1    <br>     Subnet : IC1-2    <br>     Subnet : C101-2   <br>     Subnet : header1-10 <br>     Subnet : IC1-41   <br>     Subnet : C211-2   <br>     Subnet : C241-2   <br>     Subnet : C262-2   <br>     Subnet : L252-2   <br>     Subnet : C253-2   <br>     Subnet : C255-1   <br>     Subnet : C8-2     <br>     Subnet : C9-2     <br>     Orphaned copper starting from : Area Fill (-24.0992mm,34.20232mm) (-21.91922mm,39.08232mm)  Top Layer <br>     Orphaned copper starting from : Area Fill (-28.50803mm,30.43682mm) (-14.40986mm,32.17235mm)  Bottom Layer <br>     Orphaned copper starting from : Area Fill (-11.55698mm,30.48mm) (2.71782mm,32.17235mm)  Top Layer <br>     Orphaned copper starting from : Area Fill (-11.55698mm,30.48mm) (2.71782mm,32.17235mm)  Bottom Layer <br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3380.096mil|Location2.X=4876.122mil|Location1.Y=1957.819mil|Location2.Y=3183.504mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3380.096mil|Location2.X=4876.122mil|Location1.Y=1957.819mil|Location2.Y=3183.504mil|Absolute=True">Net DD</acronym></a><br> is broken into 3 sub-nets. Routed To 0.00%<br>
+     Subnet : IC1-35   <br>     Subnet : P2-4     <br>     Subnet : header1-7 <br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3066.245mil|Location2.X=4876.122mil|Location1.Y=1917.662mil|Location2.Y=3143.347mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3066.245mil|Location2.X=4876.122mil|Location1.Y=1917.662mil|Location2.Y=3143.347mil|Absolute=True">Net DC</acronym></a><br> is broken into 4 sub-nets. Routed To 0.00%<br>
+     Subnet : R4-1     <br>     Subnet : IC1-34   <br>     Subnet : P2-3     <br>     Subnet : header1-8 <br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3487.496mil|Location2.X=4612.122mil|Location1.Y=1849.945mil|Location2.Y=3075.629mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3487.496mil|Location2.X=4612.122mil|Location1.Y=1849.945mil|Location2.Y=3075.629mil|Absolute=True">Net CSN</acronym></a><br> is broken into 3 sub-nets. Routed To 0.00%<br>
+     Subnet : P2-5     <br>     Subnet : header2-1 <br>     Subnet : IC1-6    <br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3113.685mil|Location2.X=3875.591mil|Location1.Y=2197.381mil|Location2.Y=3423.065mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3113.685mil|Location2.X=3875.591mil|Location1.Y=2197.381mil|Location2.Y=3423.065mil|Absolute=True">Net 1VCC1.8</acronym></a><br> is broken into 2 sub-nets. Routed To 0.00%<br>
+     Subnet : IC1-40   <br>     Subnet : C14-1    <br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3388.505mil|Location2.X=4150.41mil|Location1.Y=2610.464mil|Location2.Y=3836.149mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3388.505mil|Location2.X=4150.41mil|Location1.Y=2610.464mil|Location2.Y=3836.149mil|Absolute=True">Net NetC8_1</acronym></a><br> is broken into 3 sub-nets. Routed To 0.00%<br>
+     Subnet : IC1-23   <br>     Subnet : Y1-1     <br>     Subnet : C8-1     <br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3429.843mil|Location2.X=4191.748mil|Location1.Y=2559.283mil|Location2.Y=3784.968mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3429.843mil|Location2.X=4191.748mil|Location1.Y=2559.283mil|Location2.Y=3784.968mil|Absolute=True">Net NetC9_1</acronym></a><br> is broken into 3 sub-nets. Routed To 0.00%<br>
+     Subnet : IC1-22   <br>     Subnet : C9-1     <br>     Subnet : Y1-2     <br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%AD%A6%E4%B9%A0\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3261.983mil|Location2.X=4023.889mil|Location1.Y=2944.975mil|Location2.Y=4170.659mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ѧϰ\zigbee\cc2530\RF-2530.PcbDoc;viewname=PCBEditor;Action=Area|Location1.X=3261.983mil|Location2.X=4023.889mil|Location1.Y=2944.975mil|Location2.Y=4170.659mil|Absolute=True">Net NetC254_2</acronym></a><br> is broken into 2 sub-nets. Routed To 0.00%<br>
+     Subnet : C254-2   <br>     Subnet : C255-2   <br></td>
+</tr>
+</table></a><a href="#top">Back to top</a><br><br></body>
+</html>

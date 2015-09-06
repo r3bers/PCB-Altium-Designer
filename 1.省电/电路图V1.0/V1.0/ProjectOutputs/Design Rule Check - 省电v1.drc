@@ -1,0 +1,38 @@
+Protel Design System Design Rule Check
+PCB File : F:\电子\省电\电路图\V1.0\省电v1.0.PcbDoc
+Date     : 2014/8/11
+Time     : 21:53:51
+
+Processing Rule : Hole Size Constraint (Min=1mil) (Max=100mil) (All)
+Rule Violations :0
+
+Processing Rule : Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=10mil) (Max=20mil) (Preferred=10mil) (All)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=7mil) (All),(All)
+   Violation between Track (4522.598mil,3668.267mil)(4542.323mil,3687.992mil)  Top Layer and 
+                     Pad U3-3(4542.283mil,3636.575mil)  Top Layer
+   Violation between Track (4542.323mil,3687.992mil)(4561.968mil,3668.347mil)  Top Layer and 
+                     Pad U3-3(4542.283mil,3636.575mil)  Top Layer
+   Violation between Track (4561.968mil,3636.575mil)(4561.968mil,3668.347mil)  Top Layer and 
+                     Pad U3-5(4603.307mil,3677.914mil)  Top Layer
+   Violation between Track (4542.323mil,3687.992mil)(4561.968mil,3668.347mil)  Top Layer and 
+                     Pad U3-5(4603.307mil,3677.914mil)  Top Layer
+   Violation between Track (4371.969mil,3736.969mil)(4502.205mil,3736.969mil)  Top Layer and 
+                     Pad U3-12(4502.913mil,3778.307mil)  Top Layer
+   Violation between Track (4502.205mil,3736.969mil)(4542.323mil,3696.851mil)  Top Layer and 
+                     Pad U3-12(4502.913mil,3778.307mil)  Top Layer
+Rule Violations :6
+
+Processing Rule : Broken-Net Constraint ( (All) )
+Rule Violations :0
+
+Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+Rule Violations :0
+
+
+Violations Detected : 6
+Time Elapsed        : 00:00:01

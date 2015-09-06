@@ -1,0 +1,448 @@
+Protel Design System Design Rule Check
+PCB File : D:\1.Embeded Engineering\Myself\My AD Prj\14.11.2远程医疗\远程医疗布局完毕.PcbDoc
+Date     : 11/6/2014
+Time     : 2:11:06 PM
+
+Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+   Violation between Pad R22-2(66.8655mm,130.55437mm)  Bottom Layer and 
+                     Pad USB_1-MH1(66.88602mm,129.83489mm)  Multi-Layer
+Rule Violations :1
+
+Processing Rule : Un-Routed Net Constraint ( (All) )
+   Violation between Un-Routed Net Constraint: Net 3V3 Between Pad C17-2 (43.3705,106.80537mm) And Via (43.6626,107.5182mm)
+   Violation between Un-Routed Net Constraint: Net 3V3 Between Via (38.39901,101.219mm) And Pad U2-4 (38.39901,102.616mm)
+   Violation between Un-Routed Net Constraint: Net 3V3 Between Pad C21-2 (43.3705,105.28137mm) And Pad C17-2 (43.3705,106.80537mm)
+   Violation between Un-Routed Net Constraint: Net 3V3 Between Pad U2-17 (43.65102,109.31601mm) And Via (43.6626,107.5182mm)
+   Violation between Un-Routed Net Constraint: Net 3V3 Between Pad U2-4 (38.39901,102.616mm) And Pad C21-2 (43.3705,105.28137mm)
+   Violation between Un-Routed Net Constraint: Net BOOT0 Between Pad R18-2 (33.2105,88.26663mm) And Via (33.2105,88.97463mm)
+   Violation between Un-Routed Net Constraint: Net BOOT0 Between Pad R18-2 (33.2105,88.26663mm) And Via (33.93277,88.26663mm)
+   Violation between Un-Routed Net Constraint: Net BOOT0 Between Via (71.3994,160.528mm) And Pad R7-1 (72.263,160.9852mm)
+   Violation between Un-Routed Net Constraint: Net BOOT0 Between Via (71.3994,140.8938mm) And Via (71.3994,160.528mm)
+   Violation between Un-Routed Net Constraint: Net BOOT0 Between Pad U1-60 (51.19802,124.25502mm) And Via (71.3994,140.8938mm)
+   Violation between Un-Routed Net Constraint: Net BOOT0 Between Via (33.93277,88.26663mm) And Pad U1-60 (51.19802,124.25502mm)
+   Violation between Un-Routed Net Constraint: Net BOOT1 Between Pad 2.4'/2.8'LCD-8 (36.322,145.542mm) And Pad R8-2 (72.26137,156.0195mm)
+   Violation between Un-Routed Net Constraint: Net BOOT1 Between Pad 2.4'/2.8'LCD-8 (36.322,145.542mm) And Pad U1-28 (54.69799,113.35502mm)
+   Violation between Un-Routed Net Constraint: Net BT RXD Between Pad U1-42 (58.398,119.55501mm) And Pad BlueTooth-2 (61.849,102.235mm)
+   Violation between Un-Routed Net Constraint: Net BT RXD Between Pad PA Header-10 (26.543,114.935mm) And Pad U1-42 (58.398,119.55501mm)
+   Violation between Un-Routed Net Constraint: Net BT TXD Between Pad U1-43 (58.398,120.05503mm) And Pad BlueTooth-3 (64.389,102.235mm)
+   Violation between Un-Routed Net Constraint: Net BT TXD Between Pad PA Header-11 (26.543,117.475mm) And Pad U1-43 (58.398,120.05503mm)
+   Violation between Un-Routed Net Constraint: Net ECG Between Pad PA Header-3 (26.543,97.155mm) And Pad U1-16 (47.498,115.05504mm)
+   Violation between Un-Routed Net Constraint: Net ECG Between Pad U1-16 (47.498,115.05504mm) And Pad ECG-1 (53.848,68.326mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad U2-26 (37.74902,109.31601mm) And Pad U2-25 (38.39901,109.31601mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Via (56.007,116.84mm) And Pad C10-2 (56.00863,117.5385mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Via (52.832,116.8432mm) And Pad C6-1 (52.832,117.5512mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Via (54.5465,121.08337mm) And Pad C11-2 (54.5465,121.79137mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad C12-2 (51.1175,121.92163mm) And Via (51.1175,122.62963mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Via (54.483,116.84mm) And Pad C7-1 (54.483,117.5512mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Via (33.9852,67.2338mm) And Pad C16-1 (33.9852,67.945mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Via (55.0672,89.3445mm) And Pad C9-2 (56.26263,89.3445mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad ECG-5 (53.848,89.408mm) And Via (55.0672,89.3445mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Via (40.999,107.9246mm) And Pad U2-21 (40.999,109.31601mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad U2-18 (43.00098,109.31601mm) And Via (43.00098,110.71804mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad C8-2 (47.6885,150.74737mm) And Pad C13-1 (47.7012,152.146mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad C4-1 (41.6052,90.932mm) And Pad C5-1 (41.6052,92.456mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad C2-1 (35.941,94.0308mm) And Pad C3-1 (37.465,94.0308mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad C21-1 (44.7548,105.283mm) And Pad C17-1 (44.7548,106.807mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad C19-1 (47.9552,92.202mm) And Pad C20-1 (48.0822,90.551mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad D4-1 (32.893,154.559mm) And Via (32.893,156.3878mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Via (43.00098,110.71804mm) And Via (43.00098,113.03mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad VOUT3-3 (54.356,159.131mm) And Pad VOUT3-5 (54.356,161.671mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad VOUT2-3 (48.26,159.258mm) And Pad VOUT2-5 (48.26,161.798mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad BOOT-5 (67.437,156.718mm) And Pad BOOT-6 (69.977,156.718mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad VOUT2-1 (48.26,156.718mm) And Pad VOUT2-3 (48.26,159.258mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad VOUT3-1 (54.356,156.591mm) And Pad VOUT3-3 (54.356,159.131mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad RESET-2 (33.782,162.814mm) And Pad KEY0-1 (36.449,162.814mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad C13-1 (47.7012,152.146mm) And Pad C14-1 (49.0728,153.797mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad U1-63 (49.698,124.25502mm) And Via (51.1175,122.62963mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Via (40.999,107.9246mm) And Via (41.19357,105.029mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad U2-7 (40.34902,102.616mm) And Via (41.19357,105.029mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad D5-1 (32.893,151.13mm) And Pad D4-1 (32.893,154.559mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Via (56.007,116.84mm) And Pad U1-31 (56.19801,113.35502mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad C18-2 (45.46763,153.9875mm) And Pad C14-1 (49.0728,153.797mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad C11-2 (54.5465,121.79137mm) And Pad U1-47 (58.398,122.05503mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad C1-1 (40.8178,160.655mm) And Pad KEY0-1 (42.94901,162.814mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad DS1-2 (30.099,152.857mm) And Pad D4-1 (32.893,154.559mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad 2.4'/2.8'LCD-22 (54.102,145.542mm) And Pad 2.4'/2.8'LCD-26 (59.182,145.542mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad 2.4'/2.8'LCD-26 (59.182,145.542mm) And Pad 2.4'/2.8'LCD-27 (61.722,143.002mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad U1-12 (47.498,117.05504mm) And Via (52.832,116.8432mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad MLX90614-4 (33.782,73.533mm) And Pad C16-1 (33.9852,67.945mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad U1-12 (47.498,117.05504mm) And Pad U1-18 (49.698,113.35502mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad C24-1 (30.226,134.6962mm) And Pad C22-2 (35.052,133.09001mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad RESET-2 (27.28199,162.814mm) And Pad RESET-2 (33.782,162.814mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad C21-1 (44.7548,105.283mm) And Via (53.848,105.283mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad P1-4 (35.052,82.042mm) And Pad Pulse-3 (42.545,80.391mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad 2.4'/2.8'LCD-27 (61.722,143.002mm) And Pad C15-2 (66.29563,136.0805mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Via (54.991,73.533mm) And Via (55.0672,89.3445mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Via (53.848,105.283mm) And Pad BlueTooth-4 (66.929,102.235mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Via (54.483,116.84mm) And Via (56.007,116.84mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad C6-1 (52.832,117.5512mm) And Pad C7-1 (54.483,117.5512mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad U2-21 (40.999,109.31601mm) And Pad U2-18 (43.00098,109.31601mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad U2-25 (38.39901,109.31601mm) And Pad U2-21 (40.999,109.31601mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad C12-2 (51.1175,121.92163mm) And Pad C11-2 (54.5465,121.79137mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad VOUT2-1 (48.26,156.718mm) And Pad C14-1 (49.0728,153.797mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Via (41.19357,105.029mm) And Pad C21-1 (44.7548,105.283mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad C3-1 (37.465,94.0308mm) And Pad C5-1 (41.6052,92.456mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad VOUT2-1 (48.26,156.718mm) And Pad VOUT3-1 (54.356,156.591mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad KEY0-1 (42.94901,162.814mm) And Pad VOUT2-5 (48.26,161.798mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad KEY0-1 (36.449,162.814mm) And Pad KEY0-1 (42.94901,162.814mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad C5-1 (41.6052,92.456mm) And Pad C19-1 (47.9552,92.202mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad C20-1 (48.0822,90.551mm) And Pad ECG-5 (53.848,89.408mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Via (32.893,156.3878mm) And Pad RESET-2 (33.782,162.814mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad MLX90614-4 (33.782,73.533mm) And Pad P1-4 (35.052,82.042mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad 2.4'/2.8'LCD-22 (54.102,145.542mm) And Pad VOUT3-1 (54.356,156.591mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad VOUT3-1 (54.356,156.591mm) And Pad BOOT-5 (67.437,156.718mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad DS1-2 (30.099,152.857mm) And Pad C24-1 (30.226,134.6962mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad C7-1 (54.483,117.5512mm) And Via (54.5465,121.08337mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Via (43.00098,113.03mm) And Pad U1-18 (49.698,113.35502mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad U2-7 (40.34902,102.616mm) And Pad C5-1 (41.6052,92.456mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad C4-1 (41.6052,90.932mm) And Pad Pulse-3 (42.545,80.391mm)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad U1-47 (58.398,122.05503mm) And Pad C15-2 (66.29563,136.0805mm)
+   Violation between Un-Routed Net Constraint: Net JTCK Between Pad PA Header-15 (26.543,127.635mm) And Pad U1-49 (56.69798,124.25502mm)
+   Violation between Un-Routed Net Constraint: Net JTDI Between Pad PA Header-16 (26.543,130.175mm) And Pad U1-50 (56.19801,124.25502mm)
+   Violation between Un-Routed Net Constraint: Net JTDO Between Pad 2.4'/2.8'LCD-9 (38.862,143.002mm) And Pad U1-55 (53.69799,124.25502mm)
+   Violation between Un-Routed Net Constraint: Net JTMS Between Pad KEY0-2 (36.449,157.734mm) And Pad KEY0-2 (42.94901,157.734mm)
+   Violation between Un-Routed Net Constraint: Net JTMS Between Pad PA Header-14 (26.543,125.095mm) And Pad U1-46 (58.398,121.555mm)
+   Violation between Un-Routed Net Constraint: Net JTMS Between Pad PA Header-14 (26.543,125.095mm) And Pad KEY0-2 (36.449,157.734mm)
+   Violation between Un-Routed Net Constraint: Net JTRST Between Pad 2.4'/2.8'LCD-10 (38.862,145.542mm) And Pad U1-56 (53.19801,124.25502mm)
+   Violation between Un-Routed Net Constraint: Net LCD BL Between Pad U1-51 (55.69798,124.25502mm) And Pad 2.4'/2.8'LCD-23 (56.642,143.002mm)
+   Violation between Un-Routed Net Constraint: Net LCD CS Between Pad 2.4'/2.8'LCD-1 (28.702,143.002mm) And Pad U1-40 (58.398,118.55501mm)
+   Violation between Un-Routed Net Constraint: Net LCD D0 Between Pad 2.4'/2.8'LCD-6 (33.782,145.542mm) And Pad U1-26 (53.69799,113.35502mm)
+   Violation between Un-Routed Net Constraint: Net LCD D1 Between Pad 2.4'/2.8'LCD-7 (36.322,143.002mm) And Pad U1-27 (54.19801,113.35502mm)
+   Violation between Un-Routed Net Constraint: Net LCD D5 Between Pad 2.4'/2.8'LCD-11 (41.402,143.002mm) And Pad U1-57 (52.69799,124.25502mm)
+   Violation between Un-Routed Net Constraint: Net LCD D6 Between Pad 2.4'/2.8'LCD-12 (41.402,145.542mm) And Pad U1-58 (52.19802,124.25502mm)
+   Violation between Un-Routed Net Constraint: Net LCD D7 Between Pad 2.4'/2.8'LCD-13 (43.942,143.002mm) And Pad U1-59 (51.69799,124.25502mm)
+   Violation between Un-Routed Net Constraint: Net LCD D8 Between Pad 2.4'/2.8'LCD-14 (43.942,145.542mm) And Pad U1-61 (50.69799,124.25502mm)
+   Violation between Un-Routed Net Constraint: Net LCD D9 Between Pad 2.4'/2.8'LCD-15 (46.482,143.002mm) And Pad U1-62 (50.19802,124.25502mm)
+   Violation between Un-Routed Net Constraint: Net LCD D10 Between Pad 2.4'/2.8'LCD-16 (46.482,145.542mm) And Pad U1-29 (55.19801,113.35502mm)
+   Violation between Un-Routed Net Constraint: Net LCD D11 Between Pad 2.4'/2.8'LCD-17 (49.022,143.002mm) And Pad U1-30 (55.69798,113.35502mm)
+   Violation between Un-Routed Net Constraint: Net LCD D12 Between Pad 2.4'/2.8'LCD-18 (49.022,145.542mm) And Pad U1-33 (58.398,115.05504mm)
+   Violation between Un-Routed Net Constraint: Net LCD D13 Between Pad 2.4'/2.8'LCD-19 (51.562,143.002mm) And Pad U1-34 (58.398,115.55501mm)
+   Violation between Un-Routed Net Constraint: Net LCD D14 Between Pad 2.4'/2.8'LCD-20 (51.562,145.542mm) And Pad U1-35 (58.398,116.05504mm)
+   Violation between Un-Routed Net Constraint: Net LCD D15 Between Pad 2.4'/2.8'LCD-21 (54.102,143.002mm) And Pad U1-36 (58.398,116.55501mm)
+   Violation between Un-Routed Net Constraint: Net LCD RD Between Pad 2.4'/2.8'LCD-4 (31.242,145.542mm) And Pad U1-37 (58.398,117.05504mm)
+   Violation between Un-Routed Net Constraint: Net LCD RS Between Pad 2.4'/2.8'LCD-2 (28.702,145.542mm) And Pad U1-39 (58.398,118.05503mm)
+   Violation between Un-Routed Net Constraint: Net LCD WR Between Pad 2.4'/2.8'LCD-3 (31.242,143.002mm) And Pad U1-38 (58.398,117.55501mm)
+   Violation between Un-Routed Net Constraint: Net LED0 Between Pad PA Header-9 (26.543,112.395mm) And Pad U1-41 (58.398,119.05503mm)
+   Violation between Un-Routed Net Constraint: Net LED0 Between Pad PA Header-9 (26.543,112.395mm) And Pad DS0-2 (27.686,152.857mm)
+   Violation between Un-Routed Net Constraint: Net Net2.4'/2.8'LCD_31 Between Via (67.945,135.382mm) And Pad R6-2 (67.94663,136.0805mm)
+   Violation between Un-Routed Net Constraint: Net Net2.4'/2.8'LCD_31 Between Pad 2.4'/2.8'LCD-31 (66.802,143.002mm) And Pad R6-2 (67.94663,136.0805mm)
+   Violation between Un-Routed Net Constraint: Net NetBOOT_3 Between Via (72.263,163.068mm) And Pad R7-2 (72.26463,162.3695mm)
+   Violation between Un-Routed Net Constraint: Net NetBOOT_3 Between Pad BOOT-3 (67.437,159.258mm) And Pad R7-2 (72.26463,162.3695mm)
+   Violation between Un-Routed Net Constraint: Net NetBOOT_4 Between Pad BOOT-4 (69.977,159.258mm) And Pad R8-1 (72.263,157.4038mm)
+   Violation between Un-Routed Net Constraint: Net NetC2_2 Between Via (35.94263,91.948mm) And Pad C2-2 (35.94263,92.6465mm)
+   Violation between Un-Routed Net Constraint: Net NetC2_2 Between Via (35.94263,91.948mm) And Pad Y1-1 (36.068,90.805mm)
+   Violation between Un-Routed Net Constraint: Net NetC2_2 Between Pad C2-2 (35.94263,92.6465mm) And Pad U1-3 (47.498,121.555mm)
+   Violation between Un-Routed Net Constraint: Net NetC3_2 Between Via (37.46663,91.948mm) And Pad C3-2 (37.46663,92.6465mm)
+   Violation between Un-Routed Net Constraint: Net NetC3_2 Between Via (37.46663,91.948mm) And Pad Y1-2 (37.4904,90.805mm)
+   Violation between Un-Routed Net Constraint: Net NetC3_2 Between Pad C3-2 (37.46663,92.6465mm) And Pad U1-4 (47.498,121.05503mm)
+   Violation between Un-Routed Net Constraint: Net NetC4_2 Between Pad Y2-1 (41.529,89.281mm) And Pad C4-2 (42.9895,90.93363mm)
+   Violation between Un-Routed Net Constraint: Net NetC4_2 Between Pad R1-1 (39.878,91.0082mm) And Pad C4-2 (42.9895,90.93363mm)
+   Violation between Un-Routed Net Constraint: Net NetC4_2 Between Pad C4-2 (42.9895,90.93363mm) And Pad U1-5 (47.498,120.555mm)
+   Violation between Un-Routed Net Constraint: Net NetC5_2 Between Pad C5-2 (42.9895,92.45763mm) And Via (42.9895,93.1672mm)
+   Violation between Un-Routed Net Constraint: Net NetC5_2 Between Pad Y2-2 (41.529,94.161mm) And Via (42.9895,93.1672mm)
+   Violation between Un-Routed Net Constraint: Net NetC5_2 Between Pad R1-2 (39.87637,92.3925mm) And Pad C5-2 (42.9895,92.45763mm)
+   Violation between Un-Routed Net Constraint: Net NetC5_2 Between Via (42.9895,93.1672mm) And Pad U1-6 (47.498,120.05503mm)
+   Violation between Un-Routed Net Constraint: Net NetC6_2 Between Via (50.03963,115.8145mm) And Pad R2-2 (50.03963,116.5225mm)
+   Violation between Un-Routed Net Constraint: Net NetC6_2 Between Via (53.7337,118.9355mm) And Pad C7-2 (54.48137,118.9355mm)
+   Violation between Un-Routed Net Constraint: Net NetC6_2 Between Pad C6-2 (52.83037,118.9355mm) And Via (53.7337,118.9355mm)
+   Violation between Un-Routed Net Constraint: Net NetC6_2 Between Pad R2-2 (50.03963,116.5225mm) And Via (51.3207,116.5225mm)
+   Violation between Un-Routed Net Constraint: Net NetC6_2 Between Pad U1-13 (47.498,116.55501mm) And Pad R2-2 (50.03963,116.5225mm)
+   Violation between Un-Routed Net Constraint: Net NetC6_2 Between Via (51.3207,116.5225mm) And Pad C6-2 (52.83037,118.9355mm)
+   Violation between Un-Routed Net Constraint: Net NetC15_1 Between Pad R6-1 (67.945,137.4648mm) And Pad R5-2 (69.34037,137.4775mm)
+   Violation between Un-Routed Net Constraint: Net NetC15_1 Between Pad C15-1 (66.294,137.4648mm) And Pad R6-1 (67.945,137.4648mm)
+   Violation between Un-Routed Net Constraint: Net NetC19_2 Between Pad C19-2 (49.3395,92.20363mm) And Via (49.3395,92.8878mm)
+   Violation between Un-Routed Net Constraint: Net NetC19_2 Between Pad Y3-1 (48.895,93.98mm) And Via (49.3395,92.8878mm)
+   Violation between Un-Routed Net Constraint: Net NetC19_2 Between Pad U2-27 (37.09899,109.31601mm) And Pad Y3-1 (48.895,93.98mm)
+   Violation between Un-Routed Net Constraint: Net NetC20_2 Between Pad C20-2 (49.4665,90.55263mm) And Via (49.4792,89.8398mm)
+   Violation between Un-Routed Net Constraint: Net NetC20_2 Between Pad Y3-2 (48.895,89.1mm) And Via (49.4792,89.8398mm)
+   Violation between Un-Routed Net Constraint: Net NetC20_2 Between Pad U2-28 (36.449,109.31601mm) And Via (36.449,110.7186mm)
+   Violation between Un-Routed Net Constraint: Net NetC20_2 Between Pad U2-28 (36.449,109.31601mm) And Pad C20-2 (49.4665,90.55263mm)
+   Violation between Un-Routed Net Constraint: Net NetC23_2 Between Via (64.77,135.382mm) And Pad C25-1 (64.77,136.0932mm)
+   Violation between Un-Routed Net Constraint: Net NetC23_2 Between Pad U3-1 (46.48363,133.22381mm) And Pad C23-2 (53.594,133.09001mm)
+   Violation between Un-Routed Net Constraint: Net NetC23_2 Between Via (64.77,135.382mm) And Pad F1-1 (70.7898,116.84mm)
+   Violation between Un-Routed Net Constraint: Net NetC23_2 Between Pad C23-2 (53.594,133.09001mm) And Via (64.77,135.382mm)
+   Violation between Un-Routed Net Constraint: Net NetD1_2 Between Via (43.434,149.67199mm) And Pad D1-2 (43.434,150.749mm)
+   Violation between Un-Routed Net Constraint: Net NetD1_2 Between Pad D2-2 (41.275,150.749mm) And Pad D1-2 (43.434,150.749mm)
+   Violation between Un-Routed Net Constraint: Net NetD1_2 Between Via (43.434,149.67199mm) And Pad U1-1 (47.498,122.555mm)
+   Violation between Un-Routed Net Constraint: Net NetD2_1 Between Pad D2-1 (41.275,154.813mm) And Via (41.275,155.8798mm)
+   Violation between Un-Routed Net Constraint: Net NetD2_1 Between Pad R4-2 (39.4335,159.25637mm) And Via (41.275,155.8798mm)
+   Violation between Un-Routed Net Constraint: Net NetD3_2 Between Via (35.9918,99.822mm) And Pad D3-2 (37.846,99.822mm)
+   Violation between Un-Routed Net Constraint: Net NetD3_2 Between Via (34.6964,106.67837mm) And Pad R14-2 (36.7665,106.67837mm)
+   Violation between Un-Routed Net Constraint: Net NetD3_2 Between Pad Q1-3 (34.036,99.409mm) And Via (35.9918,99.822mm)
+   Violation between Un-Routed Net Constraint: Net NetD3_2 Between Via (35.9918,99.822mm) And Pad R14-2 (36.7665,106.67837mm)
+   Violation between Un-Routed Net Constraint: Net NetDS0_1 Between Pad DS0-1 (27.686,155.067mm) And Via (27.686,156.083mm)
+   Violation between Un-Routed Net Constraint: Net NetDS1_1 Between Pad DS1-1 (30.099,155.067mm) And Via (30.099,158.623mm)
+   Violation between Un-Routed Net Constraint: Net NetF1_2 Between Via (68.4276,116.83837mm) And Pad F1-2 (69.4055,116.83837mm)
+   Violation between Un-Routed Net Constraint: Net NetF1_2 Between Pad USB_2-5 (64.15898,115.89995mm) And Via (68.4276,116.83837mm)
+   Violation between Un-Routed Net Constraint: Net NetF1_2 Between Pad USB_2-5 (64.15898,115.89995mm) And Pad USB_1-5 (64.28598,129.23495mm)
+   Violation between Un-Routed Net Constraint: Net NetK1_3 Between Pad K1-3 (58.547,156.337mm) And Pad K1-4 (63.94699,156.337mm)
+   Violation between Un-Routed Net Constraint: Net NetK1_3 Between Pad USB_2-1 (64.15898,112.7mm) And Pad USB_1-1 (64.28598,126.035mm)
+   Violation between Un-Routed Net Constraint: Net NetK1_3 Between Pad K1-4 (63.94699,156.337mm) And Pad USB_1-1 (64.28598,126.035mm)
+   Violation between Un-Routed Net Constraint: Net NetQ1_1 Between Pad Q1-1 (34.98601,101.759mm) And Via (35.5854,102.997mm)
+   Violation between Un-Routed Net Constraint: Net NetQ1_1 Between Pad R19-1 (30.734,96.2152mm) And Pad R17-1 (33.147,96.2152mm)
+   Violation between Un-Routed Net Constraint: Net NetQ1_1 Between Via (35.5854,102.997mm) And Pad U2-3 (37.74902,102.616mm)
+   Violation between Un-Routed Net Constraint: Net NetQ1_1 Between Pad R17-1 (33.147,96.2152mm) And Via (39.3954,96.2152mm)
+   Violation between Un-Routed Net Constraint: Net NetQ1_1 Between Pad R17-1 (33.147,96.2152mm) And Pad Q1-1 (34.98601,101.759mm)
+   Violation between Un-Routed Net Constraint: Net NetQ1_2 Between Pad R16-2 (30.47837,101.6635mm) And Pad Q1-2 (33.08599,101.759mm)
+   Violation between Un-Routed Net Constraint: Net NetQ2_2 Between Pad Q2-2 (30.86339,92.996mm) And Via (30.86339,93.8022mm)
+   Violation between Un-Routed Net Constraint: Net NetQ2_2 Between Pad R19-2 (30.73237,97.5995mm) And Via (31.3182,98.3234mm)
+   Violation between Un-Routed Net Constraint: Net NetQ2_2 Between Pad R19-2 (30.73237,97.5995mm) And Via (30.86339,93.8022mm)
+   Violation between Un-Routed Net Constraint: Net NetQ2_3 Between Pad Q2-3 (31.8134,90.646mm) And Pad R18-1 (31.8262,88.265mm)
+   Violation between Un-Routed Net Constraint: Net NetR15_1 Between Via (36.7792,104.16626mm) And Pad R15-1 (36.7792,105.283mm)
+   Violation between Un-Routed Net Constraint: Net NetR15_1 Between Via (36.7792,104.16626mm) And Pad U2-2 (37.09899,102.616mm)
+   Violation between Un-Routed Net Constraint: Net NetR15_1 Between Pad R16-1 (30.48,100.2792mm) And Pad U2-2 (37.09899,102.616mm)
+   Violation between Un-Routed Net Constraint: Net NetR20_2 Between Via (62.8142,126.74437mm) And Pad USB_1-2 (64.28598,126.83495mm)
+   Violation between Un-Routed Net Constraint: Net NetR20_2 Between Pad USB_1-2 (64.28598,126.83495mm) And Pad R20-2 (66.8655,126.74437mm)
+   Violation between Un-Routed Net Constraint: Net NetR21_2 Between Via (66.1575,128.64937mm) And Pad R21-2 (66.8655,128.64937mm)
+   Violation between Un-Routed Net Constraint: Net NetR21_2 Between Via (66.1575,128.64937mm) And Via (66.3194,127.63495mm)
+   Violation between Un-Routed Net Constraint: Net NetR21_2 Between Pad R21-2 (66.8655,128.64937mm) And Pad R22-2 (66.8655,130.55437mm)
+   Violation between Un-Routed Net Constraint: Net NetR21_2 Between Pad USB_1-3 (64.28598,127.63495mm) And Via (66.3194,127.63495mm)
+   Violation between Un-Routed Net Constraint: Net NetR23_2 Between Via (62.6872,113.5126mm) And Pad USB_2-2 (64.15898,113.49995mm)
+   Violation between Un-Routed Net Constraint: Net NetR23_2 Between Pad USB_2-2 (64.15898,113.49995mm) And Pad R23-2 (69.2785,111.75837mm)
+   Violation between Un-Routed Net Constraint: Net NetR24_2 Between Pad R25-2 (69.2785,114.93337mm) And Pad R24-2 (69.3293,113.28237mm)
+   Violation between Un-Routed Net Constraint: Net NetR24_2 Between Pad USB_2-3 (64.15898,114.29995mm) And Via (66.24325,114.29995mm)
+   Violation between Un-Routed Net Constraint: Net NetR24_2 Between Via (66.24325,114.29995mm) And Pad R25-2 (69.2785,114.93337mm)
+   Violation between Un-Routed Net Constraint: Net PA0 Between Pad PA Header-1 (26.543,92.075mm) And Pad Pulse-1 (46.609,80.391mm)
+   Violation between Un-Routed Net Constraint: Net PA0 Between Pad Pulse-1 (46.609,80.391mm) And Pad U1-14 (47.498,116.05504mm)
+   Violation between Un-Routed Net Constraint: Net PA1 Between Pad PA Header-2 (26.543,94.615mm) And Pad U1-15 (47.498,115.55501mm)
+   Violation between Un-Routed Net Constraint: Net PA3 Between Pad PA Header-4 (26.543,99.695mm) And Pad U1-17 (49.19802,113.35502mm)
+   Violation between Un-Routed Net Constraint: Net PA4 Between Pad PA Header-5 (26.543,102.235mm) And Pad U1-20 (50.69799,113.35502mm)
+   Violation between Un-Routed Net Constraint: Net PA5 Between Pad PA Header-6 (26.543,104.775mm) And Pad U1-21 (51.19802,113.35502mm)
+   Violation between Un-Routed Net Constraint: Net PA6 Between Pad PA Header-7 (26.543,107.315mm) And Pad U1-22 (51.69799,113.35502mm)
+   Violation between Un-Routed Net Constraint: Net PA7 Between Pad PA Header-8 (26.543,109.855mm) And Pad U1-23 (52.19802,113.35502mm)
+   Violation between Un-Routed Net Constraint: Net PA11 Between Via (68.2498,126.038mm) And Pad R20-1 (68.2498,126.746mm)
+   Violation between Un-Routed Net Constraint: Net PA11 Between Pad U1-44 (58.398,120.555mm) And Via (68.2498,126.038mm)
+   Violation between Un-Routed Net Constraint: Net PA11 Between Pad PA Header-12 (26.543,120.015mm) And Pad U1-44 (58.398,120.555mm)
+   Violation between Un-Routed Net Constraint: Net PA12 Between Pad R21-1 (68.2498,128.651mm) And Via (68.2498,129.359mm)
+   Violation between Un-Routed Net Constraint: Net PA12 Between Pad U1-45 (58.398,121.05503mm) And Pad R21-1 (68.2498,128.651mm)
+   Violation between Un-Routed Net Constraint: Net PA12 Between Pad PA Header-13 (26.543,122.555mm) And Pad U1-45 (58.398,121.05503mm)
+   Violation between Un-Routed Net Constraint: Net PC0 Between Pad U1-8 (47.498,119.05503mm) And Pad 2.4'/2.8'LCD-34 (69.342,145.542mm)
+   Violation between Un-Routed Net Constraint: Net PC1 Between Via (69.342,135.3852mm) And Pad R5-1 (69.342,136.0932mm)
+   Violation between Un-Routed Net Constraint: Net PC1 Between Pad U1-9 (47.498,118.55501mm) And Via (69.342,135.3852mm)
+   Violation between Un-Routed Net Constraint: Net PC2 Between Pad U1-10 (47.498,118.05503mm) And Pad 2.4'/2.8'LCD-29 (64.262,143.002mm)
+   Violation between Un-Routed Net Constraint: Net PC3 Between Pad U1-11 (47.498,117.55501mm) And Pad 2.4'/2.8'LCD-30 (64.262,145.542mm)
+   Violation between Un-Routed Net Constraint: Net PC4 Between Pad R9-1 (27.6352,67.691mm) And Via (27.6352,68.4022mm)
+   Violation between Un-Routed Net Constraint: Net PC4 Between Via (27.6352,68.4022mm) And Pad MLX90614-2 (27.813,73.533mm)
+   Violation between Un-Routed Net Constraint: Net PC4 Between Pad MLX90614-2 (27.813,73.533mm) And Pad P1-2 (29.972,82.042mm)
+   Violation between Un-Routed Net Constraint: Net PC4 Between Pad P1-2 (29.972,82.042mm) And Pad U1-24 (52.69799,113.35502mm)
+   Violation between Un-Routed Net Constraint: Net PC5 Between Pad R10-1 (29.0068,69.596mm) And Via (31.877,69.596mm)
+   Violation between Un-Routed Net Constraint: Net PC5 Between Pad MLX90614-1 (30.861,76.581mm) And Pad P1-3 (32.512,82.042mm)
+   Violation between Un-Routed Net Constraint: Net PC5 Between Pad P1-3 (32.512,82.042mm) And Pad U1-25 (53.19801,113.35502mm)
+   Violation between Un-Routed Net Constraint: Net PC5 Between Pad MLX90614-1 (30.861,76.581mm) And Via (31.877,69.596mm)
+   Violation between Un-Routed Net Constraint: Net PC13 Between Pad U1-2 (47.498,122.05503mm) And Pad 2.4'/2.8'LCD-33 (69.342,143.002mm)
+   Violation between Un-Routed Net Constraint: Net PL2303 D+ Between Pad R24-1 (70.7136,113.284mm) And Via (70.7136,113.9952mm)
+   Violation between Un-Routed Net Constraint: Net PL2303 D+ Between Pad U2-15 (44.95099,109.31601mm) And Pad R24-1 (70.7136,113.284mm)
+   Violation between Un-Routed Net Constraint: Net PL2303 D- Between Pad U2-16 (44.301,109.31601mm) And Via (44.301,110.9218mm)
+   Violation between Un-Routed Net Constraint: Net PL2303 D- Between Via (44.301,110.9218mm) And Pad R23-1 (70.6628,111.76mm)
+   Violation between Un-Routed Net Constraint: Net RESET Between Via (40.4622,99.822mm) And Pad D3-1 (41.91,99.822mm)
+   Violation between Un-Routed Net Constraint: Net RESET Between Pad D3-1 (41.91,99.822mm) And Via (42.98701,99.314mm)
+   Violation between Un-Routed Net Constraint: Net RESET Between Pad R3-1 (32.258,159.3342mm) And Pad RESET-1 (33.782,157.734mm)
+   Violation between Un-Routed Net Constraint: Net RESET Between Pad RESET-1 (27.28199,157.734mm) And Pad RESET-1 (33.782,157.734mm)
+   Violation between Un-Routed Net Constraint: Net RESET Between Pad R3-1 (32.258,159.3342mm) And Pad C1-2 (39.4335,160.65337mm)
+   Violation between Un-Routed Net Constraint: Net RESET Between Pad 2.4'/2.8'LCD-5 (33.782,143.002mm) And Pad RESET-1 (33.782,157.734mm)
+   Violation between Un-Routed Net Constraint: Net RESET Between Via (42.98701,99.314mm) And Pad U1-7 (47.498,119.55501mm)
+   Violation between Un-Routed Net Constraint: Net RESET Between Pad 2.4'/2.8'LCD-5 (33.782,143.002mm) And Pad U1-7 (47.498,119.55501mm)
+   Violation between Un-Routed Net Constraint: Net RXD Between Pad U2-5 (39.04899,102.616mm) And Via (39.04899,104.013mm)
+   Violation between Un-Routed Net Constraint: Net RXD Between Pad PL2303-2 (29.083,112.395mm) And Via (39.04899,104.013mm)
+   Violation between Un-Routed Net Constraint: Net TXD Between Pad PL2303-1 (29.083,114.935mm) And Pad U2-1 (36.449,102.616mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Via (32.76341,90.0684mm) And Via (33.3248,90.0684mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad R2-1 (50.038,117.9068mm) And Via (50.038,118.6148mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad R17-2 (33.14537,97.5995mm) And Via (33.14537,98.3075mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Via (55.9308,121.085mm) And Pad C11-1 (55.9308,121.793mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad C12-1 (49.7332,121.92mm) And Via (49.7332,122.628mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad C24-2 (30.22763,136.0805mm) And Via (30.93563,136.0805mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad C13-2 (49.0855,152.14763mm) And Via (49.0855,152.8699mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Via (55.9308,119.6308mm) And Pad C10-1 (56.007,118.9228mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad R25-1 (70.6628,114.935mm) And Via (71.7804,114.935mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Via (31.9278,93.3262mm) And Pad Q2-1 (32.76341,92.996mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad R14-1 (38.1508,106.68mm) And Pad R15-2 (38.1635,105.28463mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad C8-1 (49.0728,150.749mm) And Pad C13-2 (49.0855,152.14763mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad Q2-1 (32.76341,92.996mm) And Via (33.7566,93.4786mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Via (40.386,134.1628mm) And Pad U3-4 (40.38763,135.76381mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad D4-2 (38.481,154.559mm) And Via (38.481,156.3878mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad C22-1 (35.052,138.684mm) And Via (35.052,140.6144mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad R9-2 (29.0195,67.69263mm) And Via (30.988,67.69263mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad U1-64 (49.19802,124.25502mm) And Via (49.7332,122.628mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad BOOT-1 (67.437,161.798mm) And Pad BOOT-2 (69.977,161.798mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad VOUT2-2 (45.72,156.718mm) And Pad VOUT2-4 (45.72,159.258mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad VOUT2-4 (45.72,159.258mm) And Pad VOUT2-6 (45.72,161.798mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Via (30.988,67.69263mm) And Pad MLX90614-3 (30.988,70.612mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad C11-1 (55.9308,121.793mm) And Pad U1-48 (58.398,122.555mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad R10-2 (27.6225,69.59437mm) And Pad R9-2 (29.0195,67.69263mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad U3-2 (46.48363,135.76381mm) And Via (48.7172,137.2616mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad D1-1 (43.434,154.813mm) And Pad VOUT2-2 (45.72,156.718mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad C24-2 (30.22763,136.0805mm) And Via (30.22763,140.6144mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Via (30.988,67.69263mm) And Pad C16-2 (35.3695,67.94663mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad R2-1 (50.038,117.9068mm) And Pad U1-19 (50.19802,113.35502mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad 2.4'/2.8'LCD-24 (56.642,145.542mm) And Pad 2.4'/2.8'LCD-25 (59.182,143.002mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad C10-1 (56.007,118.9228mm) And Pad U1-32 (56.69798,113.35502mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Track on layer Bottom Layer (34.7472,160.7185mm) And Via (38.481,156.3878mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad ECG-2 (53.848,81.788mm) And Pad C9-1 (56.261,87.9602mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Via (40.38763,124.4092mm) And Pad U1-64 (49.19802,124.25502mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad Pulse-2 (44.577,80.391mm) And Pad ECG-2 (53.848,81.788mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad P1-1 (27.432,82.042mm) And Pad R10-2 (27.6225,69.59437mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad U1-48 (58.398,122.555mm) And Pad R22-1 (68.2498,130.556mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Via (55.9308,119.6308mm) And Via (55.9308,121.0818mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Via (32.76341,90.0684mm) And Pad Q2-1 (32.76341,92.996mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad C12-1 (49.7332,121.92mm) And Via (50.038,118.6148mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad R17-2 (33.14537,97.5995mm) And Via (33.7566,93.4786mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Via (30.22763,140.6144mm) And Via (35.052,140.6144mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad D4-2 (38.481,154.559mm) And Pad D1-1 (43.434,154.813mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad U3-4 (40.38763,135.76381mm) And Pad U3-2 (46.48363,135.76381mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad VOUT2-2 (45.72,156.718mm) And Via (49.0855,152.8699mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Via (33.14537,98.3075mm) And Pad R15-2 (38.1635,105.28463mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad C8-1 (49.0728,150.749mm) And Pad 2.4'/2.8'LCD-24 (56.642,145.542mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad P1-1 (27.432,82.042mm) And Via (32.76341,90.0684mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad U1-32 (56.69798,113.35502mm) And Pad R25-1 (70.6628,114.935mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad P1-1 (27.432,82.042mm) And Pad Pulse-2 (44.577,80.391mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad VOUT2-6 (45.72,161.798mm) And Pad BOOT-1 (67.437,161.798mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Via (50.038,118.6148mm) And Pad C10-1 (56.007,118.9228mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad C22-1 (35.052,138.684mm) And Pad U3-4 (40.38763,135.76381mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Via (48.7172,137.2616mm) And Pad C8-1 (49.0728,150.749mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Pad R14-1 (38.1508,106.68mm) And Pad U1-19 (50.19802,113.35502mm)
+   Violation between Un-Routed Net Constraint: Net VCC3.3 Between Via (40.386,134.1628mm) And Via (40.38763,124.4092mm)
+   Violation between Un-Routed Net Constraint: Net VCC5 Between Pad U2-20 (41.70101,109.31601mm) And Pad U2-19 (42.29898,109.31601mm)
+   Violation between Un-Routed Net Constraint: Net VCC5 Between Pad U2-24 (39.04899,109.31601mm) And Pad U2-23 (39.69898,109.31601mm)
+   Violation between Un-Routed Net Constraint: Net VCC5 Between Pad U2-23 (39.69898,109.31601mm) And Pad U2-22 (40.34902,109.31601mm)
+   Violation between Un-Routed Net Constraint: Net VCC5 Between Via (45.466,151.892mm) And Pad C18-1 (45.466,152.6032mm)
+   Violation between Un-Routed Net Constraint: Net VCC5 Between Via (40.34902,110.6932mm) And Via (41.70101,110.6932mm)
+   Violation between Un-Routed Net Constraint: Net VCC5 Between Pad C23-1 (53.594,138.684mm) And Via (53.594,140.6144mm)
+   Violation between Un-Routed Net Constraint: Net VCC5 Between Pad VOUT3-4 (51.816,159.131mm) And Pad VOUT3-6 (51.816,161.671mm)
+   Violation between Un-Routed Net Constraint: Net VCC5 Between Pad VOUT3-2 (51.816,156.591mm) And Pad VOUT3-4 (51.816,159.131mm)
+   Violation between Un-Routed Net Constraint: Net VCC5 Between Pad C18-1 (45.466,152.6032mm) And Via (45.466,155.3464mm)
+   Violation between Un-Routed Net Constraint: Net VCC5 Between Pad C18-1 (45.466,152.6032mm) And Pad C14-2 (47.6885,153.79537mm)
+   Violation between Un-Routed Net Constraint: Net VCC5 Between Pad K1-2 (58.547,158.877mm) And Pad K1-5 (63.94699,158.877mm)
+   Violation between Un-Routed Net Constraint: Net VCC5 Between Pad U2-22 (40.34902,109.31601mm) And Pad U2-8 (40.999,102.616mm)
+   Violation between Un-Routed Net Constraint: Net VCC5 Between Pad U3-3 (46.48363,138.30381mm) And Pad C23-1 (53.594,138.684mm)
+   Violation between Un-Routed Net Constraint: Net VCC5 Between Pad D5-2 (38.481,151.13mm) And Via (45.466,151.892mm)
+   Violation between Un-Routed Net Constraint: Net VCC5 Between Pad 2.4'/2.8'LCD-28 (61.722,145.542mm) And Pad C25-2 (64.76837,137.4775mm)
+   Violation between Un-Routed Net Constraint: Net VCC5 Between Pad U2-22 (40.34902,109.31601mm) And Pad U2-20 (41.70101,109.31601mm)
+   Violation between Un-Routed Net Constraint: Net VCC5 Between Pad U2-20 (41.70101,109.31601mm) And Via (41.70101,110.6932mm)
+   Violation between Un-Routed Net Constraint: Net VCC5 Between Pad C14-2 (47.6885,153.79537mm) And Pad VOUT3-2 (51.816,156.591mm)
+   Violation between Un-Routed Net Constraint: Net VCC5 Between Pad VOUT3-4 (51.816,159.131mm) And Pad K1-2 (58.547,158.877mm)
+   Violation between Un-Routed Net Constraint: Net VCC5 Between Pad C23-1 (53.594,138.684mm) And Pad C25-2 (64.76837,137.4775mm)
+   Violation between Un-Routed Net Constraint: Net VCC5 Between Via (45.466,151.892mm) And Pad U3-3 (46.48363,138.30381mm)
+   Violation between Un-Routed Net Constraint: Net VCC5 Between Via (41.70101,110.6932mm) And Pad U3-3 (46.48363,138.30381mm)
+Rule Violations :314
+
+Processing Rule : Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=0.3mm) (Max=6.3mm) (All)
+Rule Violations :0
+
+Processing Rule : Hole To Hole Clearance (Gap=0.254mm) (Disabled)(All),(All)
+Rule Violations :0
+
+Processing Rule : Minimum Solder Mask Sliver (Gap=0.254mm) (Disabled)(All),(All)
+Rule Violations :0
+
+Processing Rule : Silk To Solder Mask (Clearance=0.1mm) (Disabled)(IsPad),(All)
+Rule Violations :0
+
+Processing Rule : Silk to Silk (Clearance=0.1mm) (Disabled)(All),(All)
+Rule Violations :0
+
+Processing Rule : Net Antennae (Tolerance=0mm) (Disabled)(All)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.1778mm) (Max=0.1778mm) (Preferred=0.1778mm) (All)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=0.1778mm) (All),(All)
+   Violation between Pad R21-2(66.8655mm,128.64937mm)  Bottom Layer and 
+                     Pad USB_1-MH1(66.88602mm,129.83489mm)  Multi-Layer
+   Violation between Pad R22-2(66.8655mm,130.55437mm)  Bottom Layer and 
+                     Pad USB_1-MH1(66.88602mm,129.83489mm)  Multi-Layer
+Rule Violations :2
+
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Room 远程医疗 (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('远程医疗'))
+   Violation between Room Definition Between Component on TopLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on TopLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on TopLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on TopLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on TopLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on TopLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on TopLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on TopLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on TopLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on TopLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on TopLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on TopLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on TopLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on TopLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on TopLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on TopLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on TopLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on TopLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on BottomLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on TopLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on TopLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on TopLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on TopLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on TopLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on TopLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on TopLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on TopLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on TopLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on TopLayer And Rule on TopLayer
+   Violation between Room Definition Between Component on TopLayer And Rule on TopLayer
+Rule Violations :81
+
+
+Violations Detected : 398
+Time Elapsed        : 00:00:00

@@ -1,0 +1,12 @@
+Board Information Report
+Filename     : D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc
+Date         : 11/28/2014
+Time         : 11:11:51 AM
+Time Elapsed : 00:00:00
+
+Routing Information
+    Routing completion, 100.00%
+    Connections, 205
+    Connections routed, 205
+    Connections remaining, 0
+count : 4

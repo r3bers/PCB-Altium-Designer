@@ -1,0 +1,552 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : sans-serif;
+			color : white;
+			background-color : #21489e;
+			padding: 0.3em;
+		}
+		body {
+			font-family : verdana;
+		}
+		td, th {
+			padding: 0.5em;
+			text-align : center;
+			width : 18%;
+		}
+		th {
+			background-color : #A6CAF0;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+		}
+		
+		.DRC_summary_header {							
+			padding-bottom : 0.1em;
+			border : 0px solid black;							
+			width: 100%;
+                        align: right;
+                        
+		}
+
+		.DRC_summary_header_col1, 
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3
+		{
+			color : black;
+			font-size:150%;
+                        padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2: 0em;
+			border : 0px solid black;
+			width : auto;
+			vertical-align: top;
+			font-weight: bold;				
+		}
+		
+		.DRC_summary_header_col1 	
+		{		                       
+			text-align: right;
+                        width: auto;	
+		}
+
+		.DRC_summary_header_col2 	
+		{		
+			text-align: center;	
+		}
+
+		.DRC_summary_header_col3 	
+		{		
+			text-align: left;	
+		}
+
+
+		
+		.header_holder
+		{
+		Width = 100%;
+		border = 0px solid green;
+		padding = 0;
+		}
+		
+		
+		
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+                {
+			left:0;
+			top:0;
+			padding-top : 0.1em;			
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top
+
+		}
+		.front_matter {	
+			
+			margin-top: 5px;
+ 			margin-left: 0px;					 			
+ 			horizontal-align: left;
+		}
+				
+		
+		.front_matter_column1 {
+			width : 10em;	
+			text-align  : right;
+			padding-right:0.1em;
+			
+		}
+		
+		.front_matter_column2 {
+                        width: 0.1em;
+			align: center;
+			text-align : center;
+			margin-right  : 0.1em;	
+			margin-left   : 0.1em;
+		}
+		.front_matter_column3 {
+			width         : auto;  
+			text-align    : left;	
+			margin-right  : 0.5em;				
+		}
+		
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : right;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #EEEEE0 
+		}
+		tr.onmouseout_even { 
+			background-color : #F3F3E3   
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : lightYellow
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #008000 
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://E:\Altium Designer 13j\Templates\AD-rgb_logo_223x64.gif
+		"><a href="dxpprocess://Client:SetupPreferences?Server=PCB|PageName=Reports" class="customize"><acronym title="dxpprocess://Client:SetupPreferences?Server=PCB|PageName=Reports">customize</acronym></a><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td Style="width:70%">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3">11/28/2014</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3">4:29:50 PM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3">00:00:01</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3"><a href="file:///D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc" class="file"><acronym title="D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc">D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td Style="Width:30%">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings</td>
+<td class="DRC_summary_header_col2">:</td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations</td>
+<td class="DRC_summary_header_col2">:</td>
+<td class="DRC_summary_header_col3" style="color : red">72</td></tr>
+</table>
+</td>
+</table>
+<hr><a name="IDLYT0YNAABJCRLVHXLFK3ZTNNPD"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDHKCE0ABNRJMJGYKS40USHIHP5O">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDJSG4EWZBXTDAHB5RFUFL4AO1GI">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID0XCHN0CZID0CMMUWVDH4KTBDOE">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDUT5B1AHZQB4QNL5XGA2PPEJBB">Hole Size Constraint (Min=0.3mm) (Max=6.3mm) (All)</a></td>
+<td class="column2">72</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDRFDIUIES3TVAH3ABPMTWEZ3V3O">Hole To Hole Clearance (Gap=0.254mm) (Disabled)(All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDSEE4KDUGC5M1DVTVLGHEM1GGSG">Minimum Solder Mask Sliver (Gap=0.254mm) (Disabled)(All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDDJDYBZLOINUJBN1G5XUWI4ZMYF">Silk To Solder Mask (Clearance=0.1mm) (Disabled)(IsPad),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDBWZXDEXRJYTSGXTMR4KHIBHVWO">Silk to Silk (Clearance=0.1mm) (Disabled)(All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDT12FTAE2SKKQRNECYOBWLOSYD">Net Antennae (Tolerance=0mm) (Disabled)(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDBXV4VZMHNDXSKWSGRFV10CEITL">Width Constraint (Min=0.1778mm) (Max=0.1778mm) (Preferred=0.1778mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDDM5B52Q1FBSXOXTJFAXYJJGQQH">Clearance Constraint (Gap=0.1778mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID4JBUPRDLHZTBIQ0ZZXTWCP4HFP">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">72</td>
+</tr>
+</table><br><hr><a name="IDUT5B1AHZQB4QNL5XGA2PPEJBB"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Hole Size Constraint (Min=0.3mm) (Max=6.3mm) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1719.689mil|Location2.X=1732.416mil|Location1.Y=5945.875mil|Location2.Y=5958.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1719.689mil|Location2.X=1732.416mil|Location1.Y=5945.875mil|Location2.Y=5958.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (43.7642mm,151.1046mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1329.189mil|Location2.X=1341.916mil|Location1.Y=4007.781mil|Location2.Y=4020.64mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1329.189mil|Location2.X=1341.916mil|Location1.Y=4007.781mil|Location2.Y=4020.64mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (33.8455mm,101.87701mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1207.689mil|Location2.X=1220.416mil|Location1.Y=2963.563mil|Location2.Y=2976.422mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1207.689mil|Location2.X=1220.416mil|Location1.Y=2963.563mil|Location2.Y=2976.422mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (30.7594mm,75.35388mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2452.689mil|Location2.X=2465.416mil|Location1.Y=4443.875mil|Location2.Y=4456.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2452.689mil|Location2.X=2465.416mil|Location1.Y=4443.875mil|Location2.Y=4456.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (62.3824mm,112.9538mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2505.689mil|Location2.X=2518.416mil|Location1.Y=4438.875mil|Location2.Y=4451.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2505.689mil|Location2.X=2518.416mil|Location1.Y=4438.875mil|Location2.Y=4451.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (63.7286mm,112.8268mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2346.689mil|Location2.X=2359.416mil|Location1.Y=5120.381mil|Location2.Y=5133.24mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2346.689mil|Location2.X=2359.416mil|Location1.Y=5120.381mil|Location2.Y=5133.24mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (59.69mm,130.13705mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2194.959mil|Location2.X=2207.686mil|Location1.Y=4931.875mil|Location2.Y=4944.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2194.959mil|Location2.X=2207.686mil|Location1.Y=4931.875mil|Location2.Y=4944.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (55.83606mm,125.349mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1046.625mil|Location2.X=1059.352mil|Location1.Y=5173.875mil|Location2.Y=5186.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1046.625mil|Location2.X=1059.352mil|Location1.Y=5173.875mil|Location2.Y=5186.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (26.66837mm,131.4958mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1587.689mil|Location2.X=1600.416mil|Location1.Y=3470.875mil|Location2.Y=3483.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1587.689mil|Location2.X=1600.416mil|Location1.Y=3470.875mil|Location2.Y=3483.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (40.4114mm,88.2396mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1980.123mil|Location2.X=1992.85mil|Location1.Y=5375.855mil|Location2.Y=5388.714mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1980.123mil|Location2.X=1992.85mil|Location1.Y=5375.855mil|Location2.Y=5388.714mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (50.37922mm,136.62609mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1864.689mil|Location2.X=1877.416mil|Location1.Y=5457.875mil|Location2.Y=5470.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1864.689mil|Location2.X=1877.416mil|Location1.Y=5457.875mil|Location2.Y=5470.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (47.4472mm,138.7094mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1881.689mil|Location2.X=1894.416mil|Location1.Y=5335.833mil|Location2.Y=5348.692mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1881.689mil|Location2.X=1894.416mil|Location1.Y=5335.833mil|Location2.Y=5348.692mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (47.879mm,135.60953mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1686.689mil|Location2.X=1699.416mil|Location1.Y=5018.875mil|Location2.Y=5031.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1686.689mil|Location2.X=1699.416mil|Location1.Y=5018.875mil|Location2.Y=5031.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (42.926mm,127.5588mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2359.689mil|Location2.X=2372.416mil|Location1.Y=4633.875mil|Location2.Y=4646.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2359.689mil|Location2.X=2372.416mil|Location1.Y=4633.875mil|Location2.Y=4646.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (60.0202mm,117.7798mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1994.689mil|Location2.X=2007.416mil|Location1.Y=5252.875mil|Location2.Y=5265.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1994.689mil|Location2.X=2007.416mil|Location1.Y=5252.875mil|Location2.Y=5265.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (50.7492mm,133.5024mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1098.689mil|Location2.X=1111.416mil|Location1.Y=5278.875mil|Location2.Y=5291.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1098.689mil|Location2.X=1111.416mil|Location1.Y=5278.875mil|Location2.Y=5291.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (27.9908mm,134.1628mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1787.037mil|Location2.X=1799.764mil|Location1.Y=4732.875mil|Location2.Y=4745.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1787.037mil|Location2.X=1799.764mil|Location1.Y=4732.875mil|Location2.Y=4745.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (45.47484mm,120.2944mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1676.657mil|Location2.X=1689.384mil|Location1.Y=4622.495mil|Location2.Y=4635.354mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1676.657mil|Location2.X=1689.384mil|Location1.Y=4622.495mil|Location2.Y=4635.354mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (42.67119mm,117.49075mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1210.689mil|Location2.X=1223.416mil|Location1.Y=2907.875mil|Location2.Y=2920.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1210.689mil|Location2.X=1223.416mil|Location1.Y=2907.875mil|Location2.Y=2920.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (30.8356mm,73.9394mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2350.689mil|Location2.X=2363.416mil|Location1.Y=4482.875mil|Location2.Y=4495.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2350.689mil|Location2.X=2363.416mil|Location1.Y=4482.875mil|Location2.Y=4495.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (59.7916mm,113.9444mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1738.689mil|Location2.X=1751.416mil|Location1.Y=4986.387mil|Location2.Y=4999.246mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1738.689mil|Location2.X=1751.416mil|Location1.Y=4986.387mil|Location2.Y=4999.246mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (44.2468mm,126.7336mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1851.689mil|Location2.X=1864.416mil|Location1.Y=3897.875mil|Location2.Y=3910.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1851.689mil|Location2.X=1864.416mil|Location1.Y=3897.875mil|Location2.Y=3910.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (47.117mm,99.0854mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2242.689mil|Location2.X=2255.416mil|Location1.Y=5124.875mil|Location2.Y=5137.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2242.689mil|Location2.X=2255.416mil|Location1.Y=5124.875mil|Location2.Y=5137.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (57.0484mm,130.2512mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1727.689mil|Location2.X=1740.416mil|Location1.Y=5038.875mil|Location2.Y=5051.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1727.689mil|Location2.X=1740.416mil|Location1.Y=5038.875mil|Location2.Y=5051.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (43.9674mm,128.0668mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1980.123mil|Location2.X=1992.85mil|Location1.Y=5337.855mil|Location2.Y=5350.714mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1980.123mil|Location2.X=1992.85mil|Location1.Y=5337.855mil|Location2.Y=5350.714mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (50.37922mm,135.66089mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2291.189mil|Location2.X=2303.916mil|Location1.Y=6162.875mil|Location2.Y=6175.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2291.189mil|Location2.X=2303.916mil|Location1.Y=6162.875mil|Location2.Y=6175.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (58.2803mm,156.6164mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1406.689mil|Location2.X=1419.416mil|Location1.Y=5366.875mil|Location2.Y=5379.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1406.689mil|Location2.X=1419.416mil|Location1.Y=5366.875mil|Location2.Y=5379.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (35.814mm,136.398mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1765.689mil|Location2.X=1778.416mil|Location1.Y=5879.875mil|Location2.Y=5892.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1765.689mil|Location2.X=1778.416mil|Location1.Y=5879.875mil|Location2.Y=5892.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (44.9326mm,149.4282mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1361.689mil|Location2.X=1374.416mil|Location1.Y=5561.875mil|Location2.Y=5574.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1361.689mil|Location2.X=1374.416mil|Location1.Y=5561.875mil|Location2.Y=5574.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (34.671mm,141.351mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1316.689mil|Location2.X=1329.416mil|Location1.Y=5007.005mil|Location2.Y=5019.864mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1316.689mil|Location2.X=1329.416mil|Location1.Y=5007.005mil|Location2.Y=5019.864mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (33.528mm,127.2573mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1906.689mil|Location2.X=1919.416mil|Location1.Y=3871.875mil|Location2.Y=3884.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1906.689mil|Location2.X=1919.416mil|Location1.Y=3871.875mil|Location2.Y=3884.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (48.514mm,98.425mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1969.189mil|Location2.X=1981.916mil|Location1.Y=4279.375mil|Location2.Y=4292.234mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1969.189mil|Location2.X=1981.916mil|Location1.Y=4279.375mil|Location2.Y=4292.234mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (50.1015mm,108.7755mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1411.689mil|Location2.X=1424.416mil|Location1.Y=4131.875mil|Location2.Y=4144.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1411.689mil|Location2.X=1424.416mil|Location1.Y=4131.875mil|Location2.Y=4144.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (35.941mm,105.029mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1546.587mil|Location2.X=1559.314mil|Location1.Y=4973.325mil|Location2.Y=4986.184mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1546.587mil|Location2.X=1559.314mil|Location1.Y=4973.325mil|Location2.Y=4986.184mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (39.36741mm,126.40183mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1991.689mil|Location2.X=2004.416mil|Location1.Y=4021.875mil|Location2.Y=4034.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1991.689mil|Location2.X=2004.416mil|Location1.Y=4021.875mil|Location2.Y=4034.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (50.673mm,102.235mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1337.689mil|Location2.X=1350.416mil|Location1.Y=3121.875mil|Location2.Y=3134.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1337.689mil|Location2.X=1350.416mil|Location1.Y=3121.875mil|Location2.Y=3134.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (34.0614mm,79.375mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2686.689mil|Location2.X=2699.416mil|Location1.Y=4896.875mil|Location2.Y=4909.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2686.689mil|Location2.X=2699.416mil|Location1.Y=4896.875mil|Location2.Y=4909.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (68.326mm,124.46mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2151.689mil|Location2.X=2164.416mil|Location1.Y=5041.875mil|Location2.Y=5054.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2151.689mil|Location2.X=2164.416mil|Location1.Y=5041.875mil|Location2.Y=5054.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (54.737mm,128.143mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1956.689mil|Location2.X=1969.416mil|Location1.Y=5461.875mil|Location2.Y=5474.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1956.689mil|Location2.X=1969.416mil|Location1.Y=5461.875mil|Location2.Y=5474.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (49.784mm,138.811mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2121.689mil|Location2.X=2134.416mil|Location1.Y=5521.875mil|Location2.Y=5534.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2121.689mil|Location2.X=2134.416mil|Location1.Y=5521.875mil|Location2.Y=5534.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (53.975mm,140.335mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1741.689mil|Location2.X=1754.416mil|Location1.Y=5121.875mil|Location2.Y=5134.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1741.689mil|Location2.X=1754.416mil|Location1.Y=5121.875mil|Location2.Y=5134.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (44.323mm,130.175mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1611.689mil|Location2.X=1624.416mil|Location1.Y=5211.875mil|Location2.Y=5224.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1611.689mil|Location2.X=1624.416mil|Location1.Y=5211.875mil|Location2.Y=5224.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (41.021mm,132.461mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1645.734mil|Location2.X=1658.461mil|Location1.Y=5282.83mil|Location2.Y=5295.689mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1645.734mil|Location2.X=1658.461mil|Location1.Y=5282.83mil|Location2.Y=5295.689mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (41.88574mm,134.26326mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1676.689mil|Location2.X=1689.416mil|Location1.Y=5271.875mil|Location2.Y=5284.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1676.689mil|Location2.X=1689.416mil|Location1.Y=5271.875mil|Location2.Y=5284.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (42.672mm,133.985mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1701.689mil|Location2.X=1714.416mil|Location1.Y=5381.875mil|Location2.Y=5394.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1701.689mil|Location2.X=1714.416mil|Location1.Y=5381.875mil|Location2.Y=5394.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (43.307mm,136.779mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1410.625mil|Location2.X=1423.352mil|Location1.Y=5121.875mil|Location2.Y=5134.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1410.625mil|Location2.X=1423.352mil|Location1.Y=5121.875mil|Location2.Y=5134.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (35.91397mm,130.175mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1431.689mil|Location2.X=1444.416mil|Location1.Y=5241.875mil|Location2.Y=5254.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1431.689mil|Location2.X=1444.416mil|Location1.Y=5241.875mil|Location2.Y=5254.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (36.449mm,133.223mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1866.689mil|Location2.X=1879.416mil|Location1.Y=4711.875mil|Location2.Y=4724.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1866.689mil|Location2.X=1879.416mil|Location1.Y=4711.875mil|Location2.Y=4724.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (47.498mm,119.761mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2446.689mil|Location2.X=2459.416mil|Location1.Y=4181.875mil|Location2.Y=4194.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2446.689mil|Location2.X=2459.416mil|Location1.Y=4181.875mil|Location2.Y=4194.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (62.23mm,106.299mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1776.689mil|Location2.X=1789.416mil|Location1.Y=4956.875mil|Location2.Y=4969.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1776.689mil|Location2.X=1789.416mil|Location1.Y=4956.875mil|Location2.Y=4969.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (45.212mm,125.984mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1461.689mil|Location2.X=1474.416mil|Location1.Y=5146.875mil|Location2.Y=5159.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1461.689mil|Location2.X=1474.416mil|Location1.Y=5146.875mil|Location2.Y=5159.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (37.211mm,130.81mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1756.611mil|Location2.X=1769.338mil|Location1.Y=5057.875mil|Location2.Y=5070.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1756.611mil|Location2.X=1769.338mil|Location1.Y=5057.875mil|Location2.Y=5070.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (44.70202mm,128.5494mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1572.906mil|Location2.X=1585.632mil|Location1.Y=5025.659mil|Location2.Y=5038.518mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1572.906mil|Location2.X=1585.632mil|Location1.Y=5025.659mil|Location2.Y=5038.518mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (40.0359mm,127.73111mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1918.689mil|Location2.X=1931.416mil|Location1.Y=5050.875mil|Location2.Y=5063.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1918.689mil|Location2.X=1931.416mil|Location1.Y=5050.875mil|Location2.Y=5063.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (48.8188mm,128.3716mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2001.689mil|Location2.X=2014.416mil|Location1.Y=5036.875mil|Location2.Y=5049.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2001.689mil|Location2.X=2014.416mil|Location1.Y=5036.875mil|Location2.Y=5049.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (50.927mm,128.016mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1946.689mil|Location2.X=1959.416mil|Location1.Y=4941.875mil|Location2.Y=4954.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1946.689mil|Location2.X=1959.416mil|Location1.Y=4941.875mil|Location2.Y=4954.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (49.53mm,125.603mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1901.689mil|Location2.X=1914.416mil|Location1.Y=4911.875mil|Location2.Y=4924.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1901.689mil|Location2.X=1914.416mil|Location1.Y=4911.875mil|Location2.Y=4924.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (48.387mm,124.841mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2041.689mil|Location2.X=2054.416mil|Location1.Y=4806.875mil|Location2.Y=4819.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2041.689mil|Location2.X=2054.416mil|Location1.Y=4806.875mil|Location2.Y=4819.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (51.943mm,122.174mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2156.689mil|Location2.X=2169.416mil|Location1.Y=4916.875mil|Location2.Y=4929.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2156.689mil|Location2.X=2169.416mil|Location1.Y=4916.875mil|Location2.Y=4929.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (54.864mm,124.968mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2176.689mil|Location2.X=2189.416mil|Location1.Y=4866.875mil|Location2.Y=4879.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2176.689mil|Location2.X=2189.416mil|Location1.Y=4866.875mil|Location2.Y=4879.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (55.372mm,123.698mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2086.689mil|Location2.X=2099.416mil|Location1.Y=4816.875mil|Location2.Y=4829.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2086.689mil|Location2.X=2099.416mil|Location1.Y=4816.875mil|Location2.Y=4829.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (53.086mm,122.428mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1901.689mil|Location2.X=1914.416mil|Location1.Y=5141.875mil|Location2.Y=5154.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1901.689mil|Location2.X=1914.416mil|Location1.Y=5141.875mil|Location2.Y=5154.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (48.387mm,130.683mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1811.689mil|Location2.X=1824.416mil|Location1.Y=5116.875mil|Location2.Y=5129.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1811.689mil|Location2.X=1824.416mil|Location1.Y=5116.875mil|Location2.Y=5129.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (46.101mm,130.048mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1830.689mil|Location2.X=1843.416mil|Location1.Y=5170.875mil|Location2.Y=5183.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1830.689mil|Location2.X=1843.416mil|Location1.Y=5170.875mil|Location2.Y=5183.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (46.5836mm,131.4196mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1826.689mil|Location2.X=1839.416mil|Location1.Y=5201.875mil|Location2.Y=5214.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1826.689mil|Location2.X=1839.416mil|Location1.Y=5201.875mil|Location2.Y=5214.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (46.482mm,132.207mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1801.689mil|Location2.X=1814.416mil|Location1.Y=5176.875mil|Location2.Y=5189.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1801.689mil|Location2.X=1814.416mil|Location1.Y=5176.875mil|Location2.Y=5189.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (45.847mm,131.572mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2041.689mil|Location2.X=2054.416mil|Location1.Y=4411.875mil|Location2.Y=4424.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2041.689mil|Location2.X=2054.416mil|Location1.Y=4411.875mil|Location2.Y=4424.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (51.943mm,112.141mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1837.031mil|Location2.X=1849.757mil|Location1.Y=4206.533mil|Location2.Y=4219.392mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1837.031mil|Location2.X=1849.757mil|Location1.Y=4206.533mil|Location2.Y=4219.392mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (46.74468mm,106.92532mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1346.689mil|Location2.X=1359.416mil|Location1.Y=3036.875mil|Location2.Y=3049.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1346.689mil|Location2.X=1359.416mil|Location1.Y=3036.875mil|Location2.Y=3049.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (34.29mm,77.216mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1256.689mil|Location2.X=1269.416mil|Location1.Y=3896.875mil|Location2.Y=3909.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1256.689mil|Location2.X=1269.416mil|Location1.Y=3896.875mil|Location2.Y=3909.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (32.004mm,99.06mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1931.689mil|Location2.X=1944.416mil|Location1.Y=4476.875mil|Location2.Y=4489.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1931.689mil|Location2.X=1944.416mil|Location1.Y=4476.875mil|Location2.Y=4489.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (49.149mm,113.792mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97v2\%E8%BF%9C%E7%A8%8B%E5%8C%BB%E7%96%97%E5%AE%8C%E6%88%902014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1246.753mil|Location2.X=1259.48mil|Location1.Y=5292.875mil|Location2.Y=5305.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\1.Embeded Engineering\Myself\My AD Prj\7.2014.11.27远程医疗v2\远程医疗完成2014-11-06.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1246.753mil|Location2.X=1259.48mil|Location1.Y=5292.875mil|Location2.Y=5305.734mil|Absolute=True">Hole Size Constraint (0.127mm &lt; 0.3mm) : Via (31.75163mm,134.5184mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+</table></a><a href="#top">Back to top</a><br><br></body>
+</html>

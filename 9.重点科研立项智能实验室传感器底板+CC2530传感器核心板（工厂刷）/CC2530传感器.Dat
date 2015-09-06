@@ -1,0 +1,33 @@
+Field=Comment~String~Comment~100|Field=Description~String~Description~100|Field=Designator~String~Designator~100|Field=Footprint~String~Footprint~100|Field=LibRef~String~LibRef~100|Field=Quantity~Integer~Quantity~100|ReportField=Currency~<none>|ReportField=ProductionQuantity~1|ReportField=ProjectFileName~CC2530传感器.PrjPcb|ReportField=ProjectFullPath~D:\1.Embeded Engineering\Myself\My AD Prj\9.CC2530传感器\CC2530传感器.PrjPcb|ReportField=Title~Bill of Materials For Project [CC2530传感器.PrjPcb] (No PCB Document Selected)|ReportField=TotalQuantity~50|ReportField=ReportTime~2:23:45 PM|ReportField=ReportDate~12/14/2014|ReportField=ReportDateTime~12/14/2014 2:23:45 PM|ReportField=OutputName~Bill of Materials|ReportField=OutputType~BOM_PartType|ReportField=GeneratorName~BOM|ReportField=GeneratorDescription~Bill of Materials|ReportField=VariantName~None|ReportField=Address1~|ReportField=Address2~|ReportField=Address3~|ReportField=Address4~|ReportField=ApprovedBy~|ReportField=Author~|ReportField=CheckedBy~|ReportField=CompanyName~|ReportField=CurrentDate~12/14/2014|ReportField=CurrentTime~2:23:17 PM|ReportField=Date~|ReportField=DocumentFullPathAndName~D:\1.Embeded Engineering\Myself\My AD Prj\9.CC2530传感器\CC2530传感器功能底板.SchDoc|ReportField=DocumentName~CC2530传感器功能底板.SchDoc|ReportField=DocumentNumber~|ReportField=DrawnBy~|ReportField=Engineer~|ReportField=ImagePath~|ReportField=ModifiedDate~12/14/2014|ReportField=Organization~|ReportField=ProjectName~CC2530传感器.PrjPcb|ReportField=Revision~|ReportField=Rule~|ReportField=SheetNumber~|ReportField=SheetTotal~|ReportField=Time~|ReportField=Title~|ReportField=DataSourceFileName~CC2530传感器.PrjPcb|ReportField=DataSourceFullPath~D:\1.Embeded Engineering\Myself\My AD Prj\9.CC2530传感器\CC2530传感器.PrjPcb
+BAT||BAT|BAT|BAT|1
+BH1750FVI||BH1750FVI|BH1750FVI|BH1750FVI|1
+100pF|Capacitor, Capacitor (Semiconductor SIM Model), Capacitor (Semiconductor SIM Model)|C3, C4, C13|DIODE_SOP|Cap, Cap Semi, Cap Semi|3
+104|Capacitor (Semiconductor SIM Model)|C15|DIODE_SOP|Cap Semi|1
+10uF|Polarized Capacitor (Radial)|C16, C17|DIODE_SOP|Cap Pol1|2
+1N4148|1N4148|D1|C1206|D|1
+LED||D2|DIODE_SOP|LED|1
+LED1GREEN|Typical RED, GREEN, YELLOW, AMBER GaAs LED|DS2|SMDLED|LED2|1
+LED1RED|Typical RED, GREEN, YELLOW, AMBER GaAs LED|DS3|SMDLED|LED2|1
+HT7133||HT7133|HT7133|HT7133|1
+IRRecive||IRRecive1, IRRecive2, IRRecive3|IRRecive|IRRecive|3
+JTAG_10||JTAG_10|JTAG_10|JTAG_10|1
+BUTTON||K1|BTN8.5*8.5|BUTTON|1
+LM393MX||LM393MX1, LM393MX2|LM393MX|LM393MX|2
+OLED SPI 7||OLED SPI 7|OLED SPI 7|OLED SPI 7|1
+Header 4|Header, 4-Pin|P1|HDR1X4|Header 4|1
+Header 7X2|Header, 7-Pin, Dual row|P2|HDR2X7|Header 7X2|1
+Header 6X2|Header, 6-Pin, Dual row|P3|HDR2X6|Header 6X2|1
+8050|8050/BCW846/BCW847|Q1|SOT-23R|NPN|1
+Res3|Resistor|R1, R6, R7, R10, R11, R12, R13, R14, R15, R19, R20, R21|J1-0603|Res3|12
+330R||R2|J1-0603|RES2|1
+1K||R3, R5|0603P|R|2
+10K||R4|J1-0603|res0402|1
+1K||R8|J1-0603|R|1
+Res Semi|Semiconductor Resistor|R9|J1-0603|Res Semi|1
+4K||R16|0603P|R|1
+RELAY3.3V||RELAY3.3V|RELAY3.3V|RELAY3.3V|1
+RES 3296||RES 3296|RES 3296|RES 3296|1
+SS14||SS14|IN4007|IN4007|1
+TP4056||TP4056|TP4056|TP4056|1
+USB||USB_1|USB/SM0.8-6H5|USB5|1
+插槽||插槽|杜邦线插槽|插槽|1

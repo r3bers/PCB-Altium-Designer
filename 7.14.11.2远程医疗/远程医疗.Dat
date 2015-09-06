@@ -1,0 +1,45 @@
+Field=Comment~String~Comment~100|Field=Description~String~Description~100|Field=Designator~String~Designator~100|Field=Footprint~String~Footprint~100|Field=LibRef~String~LibRef~100|Field=Quantity~Integer~Quantity~100|ReportField=Currency~<none>|ReportField=ProductionQuantity~1|ReportField=ProjectFileName~远程医疗.PrjPCB|ReportField=ProjectFullPath~D:\1.Embeded Engineering\Myself\My AD Prj\7.14.11.2远程医疗\远程医疗.PrjPCB|ReportField=Title~Bill of Materials For Project [远程医疗.PrjPCB] (No PCB Document Selected)|ReportField=TotalQuantity~82|ReportField=ReportTime~7:17:41 PM|ReportField=ReportDate~11/15/2014|ReportField=ReportDateTime~11/15/2014 7:17:41 PM|ReportField=OutputName~Bill of Materials|ReportField=OutputType~BOM_PartType|ReportField=GeneratorName~BOM|ReportField=GeneratorDescription~Bill of Materials|ReportField=VariantName~None|ReportField=Address1~|ReportField=Address2~|ReportField=Address3~|ReportField=Address4~|ReportField=ApprovedBy~|ReportField=Author~|ReportField=CheckedBy~|ReportField=CompanyName~|ReportField=CurrentDate~11/15/2014|ReportField=CurrentTime~7:17:39 PM|ReportField=Date~|ReportField=DocumentFullPathAndName~D:\1.Embeded Engineering\Myself\My AD Prj\7.14.11.2远程医疗\远程医疗.SchDoc|ReportField=DocumentName~远程医疗.SchDoc|ReportField=DocumentNumber~|ReportField=DrawnBy~|ReportField=Engineer~|ReportField=ImagePath~|ReportField=ModifiedDate~11/6/2014|ReportField=Organization~|ReportField=ProjectName~远程医疗.PrjPCB|ReportField=Revision~|ReportField=Rule~|ReportField=SheetNumber~|ReportField=SheetTotal~|ReportField=Time~|ReportField=Title~|ReportField=DataSourceFileName~远程医疗.PrjPCB|ReportField=DataSourceFullPath~D:\1.Embeded Engineering\Myself\My AD Prj\7.14.11.2远程医疗\远程医疗.PrjPCB
+TFT_LCD||2.4'/2.8'LCD|DB2*17|TFT_LCD|1
+BlueTooth||BlueTooth|BlueTooth|BlueTooth|1
+VCC5|Header, 3-Pin, Dual row|BOOT, VOUT3|HDR2X3|Header 3X2|2
+104||C1, C6, C8, C9, C10, C11, C12, C13, C14, C17, C18, C24, C25|0603P|C|13
+22pF||C2, C3, C4, C5, C15|0603P|C|5
+10u||C7, C21|0603P|C|2
+100nF||C16|0603P|C|1
+22||C19, C20|0603P|C|2
+220uF||C22, C23|CC6.56.5|CAP|2
+1N4148|1N4148|D1, D2, D3|DIODE_SOP|D|3
+SMBJ5.0A|TVS|D4|SMBJ|SMBJ|1
+SMBJ3.3A|TVS|D5|SMBJ|SMBJ|1
+LED0|Typical RED, GREEN, YELLOW, AMBER GaAs LED|DS0|SMDLED|LED2|1
+PWR|Typical RED, GREEN, YELLOW, AMBER GaAs LED|DS1|SMDLED|LED2|1
+ECG||ECG|ECG|ECG|1
+500mA||F1|0603P|R|1
+BUTTON||K1|BTN8.5*8.5|BUTTON|1
+KEY_M||KEY0, RESET|KEY_M|KEY_M|2
+MLX90614||MLX90614|MLX90614|MLX90614|1
+OLED_VCC|Header, 2-Pin|OLED|HDR1X2|Header 2|1
+Header 4|Header, 4-Pin|P1|HDR1X4|Header 4|1
+Header 16|Header, 16-Pin|PA Header|HDR1X16|Header 16|1
+UART|Header, 2-Pin|PL2303|HDR1X2|Header 2|1
+Pulse||Pulse|Pulse|Pulse|1
+8050|8050/BCW846/BCW847|Q1|SOT-23R|NPN|1
+8550|8550/BCW68|Q2|SOT-23R|PNP|1
+1M||R1|0603P|R|1
+10R||R2, R6|0603P|R|2
+10K||R3, R14, R15, R17|0603P|R|4
+0R||R4|0603P|R|1
+4.7K||R5, R9, R10|0603P|R|3
+100K||R7, R8|0603P|R|2
+1K||R16, R18, R19|0603P|R|3
+22R||R20, R21, R23, R24|0603P|R|4
+1.5K||R22, R25|0603P|R|2
+510||R27, R28|0603P|R|2
+STM32F103RCT6||U1|LQFP64|STM32F103RBT6|1
+PL2303||U2|ssop28|PL2303|1
+AMS1117-3.3||U3|AMS1117|AMS1117|1
+USB||USB_1, USB_2|USB/SM0.8-6H5|USB5|2
+VCC3.3|Header, 3-Pin, Dual row|VOUT2|HDR2X3|Header 3X2|1
+32.768MHz|Crystal Oscillator|Y1|XTAL 32M|XTAL|1
+8MHz|Crystal Oscillator|Y2|XTAL_US|XTAL|1
+12MHz|Crystal Oscillator|Y3|XTAL_US|XTAL|1
